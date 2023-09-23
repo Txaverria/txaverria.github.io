@@ -6,13 +6,13 @@
 }
 html,
 body {
-  height: 100%;
+	height: 100%;
 }
 
 body {
 	color: white;
 	background-color: #000000;
-	font-family: 'Roboto Mono', monospace;
+	font-family: "Roboto Mono", monospace;
 	display: flex !important;
 	align-items: center !important;
 	height: 100%;
@@ -23,7 +23,7 @@ a {
 }
 
 .custom-container {
-	max-width: 800px;
+	max-width: 900px;
 	padding: 1rem;
 }
 
@@ -108,8 +108,9 @@ a {
 
 @keyframes rotate {
 	from {
-        transform: rotate(0deg);
-    } to {
+		transform: rotate(0deg);
+	}
+	to {
 		transform: rotate(360deg);
 	}
 }

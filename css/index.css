@@ -23,31 +23,6 @@ a {
 	padding: 1rem;
 }
 
-.card-skill {
-	background-color: black;
-	border: solid 5px white;
-	height: 350px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	cursor: default;
-	transition: all 0.2s ease;
-}
-
-.card-skill:hover {
-	color: black;
-	background-color: white;
-}
-
-.card-skill:hover .logo-white {
-	filter: invert(1);
-}
-
-.card-skill p {
-	font-size: 25px;
-}
-
 .custom-btn {
 	padding: 20px;
 	width: 100%;
@@ -62,41 +37,6 @@ a {
 	width: 75%;
 	color: black;
 	background: white;
-}
-
-.box {
-	position: relative;
-	width: 300px;
-	height: 300px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-}
-.box::before {
-	content: "";
-	position: absolute;
-	width: 170px;
-	height: 143%;
-	background: linear-gradient(#00f7ff, #ff00f2);
-	animation: rotate 4s linear infinite;
-}
-.box::after {
-	content: "";
-	position: absolute;
-	background: black;
-	background-image: url(img/84CADB0A-A040-49DC-ACCE-6F754A4A1350.jpg);
-	background-size: cover;
-	inset: 5px;
-}
-
-@keyframes rotate {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
 }
 
 @keyframes typing {

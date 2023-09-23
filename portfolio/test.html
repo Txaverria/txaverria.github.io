@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: black;
+            }
+			.box {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+			}
+
+            .box h1 {
+                color: white;
+                font-size: 30px;
+                z-index: 2;
+            }
+
+			.box::before {
+				content: "";
+				position: absolute;
+				width: 170px;
+				height: 14%;
+				background: linear-gradient(#99ccff, #d500f9);
+				animation: rotate 4s linear infinite;
+			}
+			.box::after {
+				content: "";
+				position: absolute;
+				/* background: black; */
+				inset: 5px;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h1>Hello</h1>
+		</div>
+	</body>
+</html>

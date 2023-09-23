@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+:root {
+	--primary-color: #1c3a41;
+	--light-primary-color: #26515a;
+	--dark-primary-color: #162b30;
+}
+html,
+body {
+	color: white;
+	background-color: #1c3a41;
+	font-family: "Roboto", sans-serif;
+}
+
+.bg-color-primary-dark {
+	background-color: var(--dark-primary-color);
+}
+
+.bg-color-primary {
+	background-color: var(--primary-color);
+}
+
+.bg-color-primary-light {
+	background-color: var(--light-primary-color);
+}
+
+.card-skill {
+	background-color: var(--dark-primary-color);
+	border-radius: 10px;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: default;
+	transition: all 0.5s ease;
+}
+
+.card-skill:hover {
+	scale: 1.05;
+	background-color: var(--light-primary-color);
+}
+
+.card-skill p {
+	font-size: 25px;
+}
+
+.custom-btn {
+	padding: 20px 30px;
+	border: 2px so;
+}

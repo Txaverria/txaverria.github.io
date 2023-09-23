@@ -6,13 +6,16 @@
 }
 html,
 body {
+  height: 100%;
+}
+
+body {
 	color: white;
 	background-color: #000000;
 	font-family: 'Roboto Mono', monospace;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
+	display: flex !important;
+	align-items: center !important;
+	height: 100%;
 }
 
 a {
@@ -20,7 +23,8 @@ a {
 }
 
 .custom-container {
-	width: 800px;
+	max-width: 800px;
+	padding: 1rem;
 }
 
 .bg-color-primary-dark {
@@ -61,7 +65,8 @@ a {
 }
 
 .custom-btn {
-	padding: 20px 50px;
+	padding: 20px;
+	width: 100%;
 	background: black;
 	color: white;
 	border: 5px solid white;
@@ -70,7 +75,7 @@ a {
 }
 
 .custom-btn:hover {
-	padding: 20px 30px;
+	width: 75%;
 	color: black;
 	background: white;
 }
@@ -107,4 +112,21 @@ a {
     } to {
 		transform: rotate(360deg);
 	}
+}
+
+@keyframes typing {
+	0% {
+		content: "_";
+	}
+	50% {
+		content: "";
+	}
+	100% {
+		content: "_";
+	}
+}
+
+.blink-span::after {
+	content: "";
+	animation: typing 1s steps(1) infinite;
 }

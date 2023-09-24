@@ -13,37 +13,48 @@
 		<link rel="stylesheet" href="css/portfolio.css" />
 
 		<style>
-			/* Blink Effect, done in HTML for easy copying on other files */
-			@keyframes typing {
-				0% {
-					content: "_";
-				}
-				50% {
-					content: "";
-				}
-				100% {
-					content: "_";
-				}
-			}
-
-			.blink-span::after {
-				content: "";
-				animation: typing 1s steps(1) infinite;
-			}
-
 			/* Avatar Image */
 			.avatar-box::after {
 				background-image: url(img/portfolio/avatar.webp);
 			}
+
+			/* Default styles for the first SVG */
+			.bi-clipboard {
+				transition: fill 0.3s ease; /* Smooth transition for fill property */
+			}
+
+			/* Styles for the first SVG when hovered */
+			.svg-container:hover .bi-clipboard {
+				fill: transparent; /* Change fill to transparent */
+			}
+
+			/* Styles for the second SVG when the first is hovered */
+			.svg-container:hover .bi-clipboard-fill {
+				fill: currentColor; /* Change fill to currentColor to match text color */
+			}
 		</style>
+
+		<link
+			rel="shortcut icon"
+			href="img/white_cube.webp"
+			type="image/x-icon"
+		/>
 	</head>
 	<body>
-		<section class="bg-black">
+		<section>
 			<nav
 				class="container navbar navbar-expand-lg fs-4 mb-5"
 				data-bs-theme="dark"
 			>
 				<div class="container-fluid">
+					<a class="navbar-brand" href="index">
+						<img
+							src="img/white_cube.webp"
+							alt="Bootstrap"
+							width="24"
+							height="24"
+						/>
+					</a>
 					<button
 						class="navbar-toggler ms-auto"
 						style="border: none"
@@ -63,7 +74,7 @@
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 							<li class="nav-item me-3">
 								<a class="nav-link" aria-current="page" href="#"
-									>Home</a
+									>Main Hub</a
 								>
 							</li>
 							<li class="nav-item me-3">
@@ -85,7 +96,9 @@
 					</div>
 				</div>
 			</nav>
+		</section>
 
+		<section>
 			<div class="container">
 				<div class="row pt-5 justify-content-center align-items-center">
 					<div class="col-12 col-md-8">
@@ -108,14 +121,19 @@
 			<div class="py-4 border-bottom"></div>
 		</section>
 
+		<div class="py-3"></div>
 		<section class="py-5">
 			<div class="container">
-				<h1 class="display-4 fw-bold mb-4">
+				<h1 class="display-4 fw-bold">
 					Skills<span class="blink-span"></span>
 				</h1>
+				<p class="fs-4 mb-5">
+					The utilities at my disposal for imagining, designing and
+					developing.
+				</p>
 				<div class="row row-cols-4 text-center align-items-center g-2">
 					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill">
+						<div class="card-custom">
 							<img
 								width="96"
 								height="96"
@@ -128,7 +146,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill">
+						<div class="card-custom">
 							<img
 								width="96"
 								height="96"
@@ -141,7 +159,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill">
+						<div class="card-custom">
 							<img
 								width="96"
 								height="96"
@@ -154,7 +172,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill">
+						<div class="card-custom">
 							<img
 								width="96"
 								height="96"
@@ -174,14 +192,18 @@
 
 		<section class="py-5">
 			<div class="container">
-				<h1 class="display-4 fw-bold mb-4">
+				<h1 class="display-4 fw-bold">
 					Projects<span class="blink-span"></span>
 				</h1>
+				<p class="fs-4 mb-5">
+					Here are some of the projects I've created. Click them for
+					more info.
+				</p>
 				<div
 					class="row text-center justify-content-center align-items-center g-2"
 				>
 					<div class="col-12 col-md-6">
-						<div class="card-skill">
+						<div class="card-custom">
 							<img
 								width="96"
 								height="96"
@@ -190,16 +212,16 @@
 								alt="html-5--v1"
 							/>
 							<h2 class="fw-bold mb-3">
-								Small Startup Company Website
+								Startup Company Website
 							</h2>
 							<p>
-								Redesigned a small business with a new website
-								and logo
+								Redesigned a startup with an enhanced new
+								website and logo
 							</p>
 						</div>
 					</div>
 					<div class="col-12 col-md-6">
-						<div class="card-skill">
+						<div class="card-custom">
 							<img
 								width="96"
 								height="96"
@@ -208,12 +230,174 @@
 								alt="css3"
 							/>
 							<h2 class="fw-bold mb-3">
-								Mockup Computer Business Website
+								Computer Business Website
 							</h2>
 							<p>
 								Created a functional website, design patter, and
 								logo
 							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="py-5"></div>
+
+		<section class="py-5">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-5">
+						<h1 class="display-4 fw-bold">
+							Contact<span class="blink-span"></span>
+						</h1>
+						<p class="fs-4">
+							My socials and contact information for any sort of
+							inquiries
+						</p>
+					</div>
+					<div class="col-12 col-lg-7">
+						<div class="row row-cols-1 g-2">
+							<div class="col">
+								<div class="contact-info d-flex">
+									<div class="me-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="26"
+											height="26"
+											fill="currentColor"
+											class="bi bi-envelope-fill mb-1"
+											viewBox="0 0 16 16"
+										>
+											<path
+												d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"
+											/>
+										</svg>
+										Email
+									</div>
+									<a
+										href="mailto:isaac.chc24@gmail.com"
+										class="custom-anchor me-4"
+									>
+										isaac.chc24@gmail.com
+									</a>
+									<a
+										type="button"
+										class="contact-info-anchor"
+										onclick="copyData('isaac.chc24@gmail.com')"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="26"
+											height="26"
+											fill="currentColor"
+											class="bi bi-clipboard mb-1"
+											viewBox="0 0 16 16"
+										>
+											<path
+												d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+											/>
+											<path
+												d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+											/>
+										</svg>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="contact-info d-flex">
+									<div class="me-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="26"
+											height="26"
+											fill="currentColor"
+											class="bi bi-linkedin mb-1"
+											viewBox="0 0 16 16"
+										>
+											<path
+												d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
+											/>
+										</svg>
+										LinkedIn
+									</div>
+									<a
+										href="https://www.linkedin.com/in/isaachavarria/"
+										class="contact-info-anchor d-flex"
+									>
+										<div
+											href="https://www.linkedin.com/in/isaachavarria/"
+											class="me-4"
+											style="text-decoration: underline"
+										>
+											isaachavarria
+										</div>
+										<span>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="26"
+												height="26"
+												fill="currentColor"
+												class="bi bi-arrow-right-square mb-1"
+												viewBox="0 0 16 16"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+												/>
+											</svg>
+										</span>
+									</a>
+								</div>
+							</div>
+							<div class="col">
+								<div class="contact-info d-flex">
+									<div class="me-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="26"
+											height="26"
+											fill="currentColor"
+											class="bi bi-phone-fill mb-1"
+											viewBox="0 0 16 16"
+										>
+											<path
+												d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"
+											/>
+										</svg>
+										Phone
+									</div>
+									<a
+										href="https://www.linkedin.com/in/isaachavarria/"
+										class="contact-info-anchor d-flex"
+									>
+										<div
+											href="https://www.linkedin.com/in/isaachavarria/"
+											class="me-4"
+											style="text-decoration: underline"
+										>
+											Ask me via email
+										</div>
+										<span>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="26"
+												height="26"
+												fill="currentColor"
+												class="bi bi-chat-left-dots mb-1"
+												viewBox="0 0 16 16"
+											>
+												<path
+													d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+												/>
+												<path
+													d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+												/>
+											</svg>
+										</span>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

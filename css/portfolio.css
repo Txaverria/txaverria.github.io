@@ -8,7 +8,21 @@ html,
 body {
 	color: white;
 	background-color: #000000;
-	font-family: 'Roboto Mono', monospace;
+	font-family: "Roboto Mono", monospace;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.custom-anchor {
+	text-decoration: underline;
+	transition: all 0.3s ease
+}
+
+.custom-anchor:hover {
+	color: #0095ff;
 }
 
 .bg-color-primary-dark {
@@ -23,9 +37,10 @@ body {
 	background-color: var(--light-primary-color);
 }
 
-.card-skill {
+.card-custom {
 	background-color: black;
 	border: solid 5px white;
+	border-radius: 5px;
 	height: 350px;
 	display: flex;
 	flex-direction: column;
@@ -35,16 +50,16 @@ body {
 	transition: all 0.2s ease;
 }
 
-.card-skill:hover {
+.card-custom:hover {
 	color: black;
 	background-color: white;
 }
 
-.card-skill:hover .logo-white {
+.card-custom:hover .logo-white {
 	filter: invert(1);
 }
 
-.card-skill p {
+.card-custom p {
 	font-size: 25px;
 }
 
@@ -53,8 +68,34 @@ body {
 	border: 5px solid white;
 }
 
+.contact-info {
+	background: black;
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	border: solid 5px black;
+	font-size: 1.5rem;
+	cursor: default;
+	width: 100%;
+	transition: all 0.2s ease;
+}
+
+.contact-info:hover {
+	border: solid 5px white;
+	transition: all 0.2s ease;
+}
+
+.contact-info-anchor {
+	transition: all 0.3s ease;
+}
+
+.contact-info-anchor:hover {
+	color: #0095ff;
+}
+
 .avatar-box {
 	position: relative;
+	border-radius: 5px;
 	width: 300px;
 	height: 300px;
 	display: flex;
@@ -87,8 +128,9 @@ body {
 
 @keyframes rotate {
 	from {
-        transform: rotate(0deg);
-    } to {
+		transform: rotate(0deg);
+	}
+	to {
 		transform: rotate(360deg);
 	}
 }

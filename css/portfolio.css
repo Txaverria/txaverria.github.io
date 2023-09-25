@@ -25,7 +25,7 @@
 }
 
 ::-webkit-scrollbar-track {
-	background: #111
+	background: #111;
 }
 
 ::-webkit-scrollbar-corner {
@@ -65,30 +65,50 @@ a {
 	background-color: var(--light-primary-color);
 }
 
-.card-custom {
+.card-skill {
 	background-color: black;
 	border: solid 5px white;
 	border-radius: 5px;
-	height: 350px;
+	height: 270px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	cursor: default;
-	transition: all 0.2s ease;
+	transition: all 0.3s ease;
 }
 
-.card-custom:hover {
+.card-skill:hover {
 	color: black;
 	background-color: white;
+	scale: 0.9;
 }
 
-.card-custom:hover .logo-white {
+.card-project {
+	background-color: black;
+	border: solid 5px white;
+	border-radius: 5px;
+	height: 375px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: default;
+	transition: all 0.3s ease;
+}
+
+.card-project:hover {
+	color: black;
+	background-color: white;
+	scale: 0.9;
+}
+
+.card-project:hover .logo-white {
 	filter: invert(1);
 }
 
-.card-custom p {
-	font-size: 25px;
+.logo-white {
+	transition: all 0.3s ease;
 }
 
 .custom-btn {

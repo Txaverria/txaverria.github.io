@@ -33,11 +33,17 @@ a {
 	transition: all 0.2s ease;
 }
 
-.custom-btn:hover {
+.button-container:hover .custom-btn {
 	width: 75%;
 	color: black;
 	background: white;
 }
+
+/* .custom-btn:hover {
+	width: 75%;
+	color: black;
+	background: white;
+} */
 
 @keyframes typing {
 	0% {

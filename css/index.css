@@ -24,26 +24,20 @@ a {
 }
 
 .custom-btn {
-	padding: 20px;
-	width: 100%;
+	padding: 20px 50px;
 	background: black;
 	color: white;
 	border: 5px solid white;
 	font-size: 25px;
+	border-radius: 5px;
 	transition: all 0.2s ease;
 }
 
-.button-container:hover .custom-btn {
-	width: 75%;
+.custom-btn:hover {
+	padding: 20px 30px;
 	color: black;
 	background: white;
 }
-
-/* .custom-btn:hover {
-	width: 75%;
-	color: black;
-	background: white;
-} */
 
 @keyframes typing {
 	0% {

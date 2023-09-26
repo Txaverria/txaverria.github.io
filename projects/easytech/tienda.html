@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Tienda EasyTech</title>
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+			crossorigin="anonymous"
+		></script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+		/>
+
+		<script
+			src="https://kit.fontawesome.com/fa2ce6a4c8.js"
+			crossorigin="anonymous"
+		></script>
+
+		<link rel="stylesheet" href="css/style.css" />
+
+		<style>
+			.product {
+				background-color: rgb(255, 255, 255);
+				cursor: default !important;
+				transition: transform 0.3s ease;
+			}
+			.product:hover {
+				transform: scale(1.05);
+			}
+
+			.cart-item {
+				cursor: default;
+			}
+
+			.cart-item:hover {
+				color: white !important;
+				background-color: var(--darkerMainColor);
+			}
+
+			.cart-item:hover .precio {
+				color: white !important;
+				background-color: var(--darkerMainColor);
+			}
+
+			#cart-items {
+				padding: 0 !important;
+				list-style-type: none;
+			}
+
+			.remove-item {
+				background-color: rgb(197, 0, 0);
+				border: 4px solid rgb(197, 0, 0);
+				color: rgb(255, 255, 255);
+				font-size: 1rem;
+				text-align: center;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+
+			.remove-item:hover {
+				color: white;
+				background-color: rgb(145, 0, 0);
+				border: 4px solid rgb(145, 0, 0);
+				box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+			}
+
+			.total-carrito {
+				border: 2px solid white;
+				font-size: 1.7rem;
+				border-radius: 5px;
+				cursor: default;
+				transition: all 0.3s ease;
+				background-color: green;
+			}
+
+			.total-carrito:hover {
+				background-color: rgb(7, 192, 7);
+			}
+
+			.product p {
+				font-size: 1.5rem;
+			}
+
+			.product img {
+				border-radius: 10px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+		</style>
+
+		<link rel="shortcut icon" href="webplogo.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid py-2 mx-4">
+				<a
+					class="navbar-brand d-flex align-items-center"
+					href="index"
+				>
+					<img
+						src="img/webplogo.webp"
+						alt="Logo"
+						width="50"
+						height="50"
+						class="align-text-top me-1"
+					/>
+					<span>EASYTECH</span>
+				</a>
+
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+					style="border: none"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarSupportedContent"
+				>
+					<ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+						<li class="nav-item me-2">
+							<a
+								class="nav-link"
+								aria-current="page"
+								href="tienda"
+								id="navTienda"
+								>TIENDA</a
+							>
+						</li>
+						<li class="nav-item dropdown me-3">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+								id="navPcs"
+							>
+								Computadoras
+							</a>
+							<ul class="dropdown-menu mb-2">
+								<li>
+									<a
+										class="dropdown-item"
+										href="rendimiento"
+										id="navPerf"
+										>Rendimiento</a
+									>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="oficina"
+										id="navOffice"
+										>Oficina</a
+									>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="empresas"
+										id="navEmpresa"
+										>Empresas</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item me-2">
+							<a
+								class="nav-link"
+								href="funcionamiento"
+								id="navFunc"
+								>FUNCIONAMIENTO</a
+							>
+						</li>
+						<li class="nav-item me-5">
+							<a
+								class="nav-link"
+								href="contacto"
+								id="navContact"
+								>CONTACTO</a
+							>
+						</li>
+						<li class="nav-item me-2">
+							<a
+								class="nav-link"
+								href="checkout"
+								id="navContact"
+								><span class="me-1">Checkout</span>
+								<i class="bi bi-cart"></i
+							></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<main>
+			<div class="container-fluid bg-white">
+				<div class="row">
+					<div class="col-12 col-lg-2 bg-black text-white">
+						<div class="sticky-top">
+							<div class="py-1"></div>
+							<div class="mb-3">
+								<h1
+									class="display-4 text-center"
+									id="tituloDesta"
+								>
+									<i class="bi bi-funnel me-2"></i>Filtros
+								</h1>
+							</div>
+							<div class="mb-3">
+								<label class="fs-3" for="product-type"
+									>Tipo de pieza:</label
+								>
+								<select
+									id="product-type"
+									class="form-select form-select-lg"
+								>
+									<option value="all">Todos</option>
+									<option value="cpu">cpu</option>
+									<option value="gpu">gpu</option>
+									<option value="ram">ram</option>
+								</select>
+							</div>
+
+							<div>
+								<label class="fs-3" for="brand-name"
+									>Marca:</label
+								>
+								<select
+									id="brand-name"
+									class="form-select form-select-lg"
+								>
+									<option value="all">Todos</option>
+									<option value="amd">amd</option>
+									<option value="kingston">Kingston</option>
+									<option value="nvidia">nvidia</option>
+									<option value="intel">intel</option>
+								</select>
+							</div>
+							<div class="py-3"></div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-7 bg-body-secondary">
+						<div class="row">
+							<h1
+								style="margin-top: 0.5rem"
+								class="display-4 text-center"
+								id="tituloDesta"
+							>
+								<i class="bi bi-cart3 me-2"></i> Productos
+							</h1>
+							<div class="col-6 col-lg-4 product cpu amd border">
+								<img
+									class="img-fluid"
+									src="img/amd-ryzen-5-5600x.webp"
+									alt="Product 1"
+								/>
+								<h2>AMD Ryzen 5 5600X</h2>
+								<p>Precio: ₡105000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div class="col-6 col-lg-4 product cpu amd border">
+								<img
+									class="img-fluid"
+									src="img/amd-ryzen-7-5700x.webp"
+									alt="Product 1"
+								/>
+								<h2>AMD Ryzen 7 5700X</h2>
+								<p>Precio: ₡150000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product cpu intel border"
+							>
+								<img
+									class="img-fluid"
+									src="img/intel-core-i5-13400.webp"
+									alt="Product 1"
+								/>
+								<h2>Intel Core i5 13400</h2>
+								<p>Precio: ₡165000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product cpu intel border"
+							>
+								<img
+									class="img-fluid"
+									src="img/intel-core-i7-11700f.webp"
+									alt="Product 1"
+								/>
+								<h2>Intel Core i7 11700f</h2>
+								<p>Precio: ₡182000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product gpu nvidia border"
+							>
+								<img
+									class="img-fluid"
+									src="img/geforce-gtx-1650-super-6-gb.webp"
+									alt="Product 1"
+								/>
+								<h2>NVIDIA gtx 1650 super 6gb</h2>
+								<p>Precio: ₡140000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product gpu nvidia border"
+							>
+								<img
+									class="img-fluid"
+									src="img/msi-geforce-rtx-4060ti-gaming-x-8gb.webp"
+									alt="Product 1"
+								/>
+								<h2>NVIDIA MSI rtx 4060ti gaming x 8gb</h2>
+								<p>Precio: ₡285000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product gpu nvidia border"
+							>
+								<img
+									class="img-fluid"
+									src="img/geforce-rtx-3060-twin-edge-8-gb.webp"
+									alt="Product 1"
+								/>
+								<h2>NVIDIA ZOTAC rtx 3060</h2>
+								<p>Precio: ₡175000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div class="col-6 col-lg-4 product gpu amd border">
+								<img
+									class="img-fluid"
+									src="img/amd-radeon-rx-7600-mech-2x-8-gb.webp"
+									alt="Product 1"
+								/>
+								<h2>AMD radeon rx 7600</h2>
+								<p>Precio: ₡189000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div class="col-6 col-lg-4 product gpu amd border">
+								<img
+									class="img-fluid"
+									src="img/asrock-amd-radeon-rx-6600-challenger-8gb.webp"
+									alt="Product 1"
+								/>
+								<h2>amd radeon rx 6600 challenger 8gb</h2>
+								<p>Precio: ₡155000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product ram kingston border"
+							>
+								<img
+									class="img-fluid"
+									src="img/kingston-fury-8-beast-gb-ddr4-3200.webp"
+									alt="Product 1"
+								/>
+								<h2>KINGSTON FURY 8GB DDR4 3200</h2>
+								<p>Precio: ₡15000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product ram kingston border"
+							>
+								<img
+									class="img-fluid"
+									src="img/kingston-fury-beast-rgb-8-gb-ddr4-3200.webp"
+									alt="Product 1"
+								/>
+								<h2>KINGSTON FURY RGB 8GB DDR4 3200</h2>
+								<p>Precio: ₡18000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+							<div
+								class="col-6 col-lg-4 product ram kingston border"
+							>
+								<img
+									class="img-fluid"
+									src="img/kingston-fury-beast-rgb-8-gb-ddr5-5600.webp"
+									alt="Product 1"
+								/>
+								<h2>KINGSTON FURY 8GB DDR5 5600</h2>
+								<p>Precio: ₡33000</p>
+								<button
+									class="add-to-cart custom-btn-normal mb-3 w-100"
+								>
+									<i class="bi bi-cart-plus me-2"></i> Agregar
+									al carrito
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-3 bg-black text-white">
+						<div class="sticky-top">
+							<div class="py-1"></div>
+							<div class="cart text-center">
+								<div class="mb-3">
+									<h1
+										class="display-4 text-center"
+										id="tituloDesta"
+									>
+										<i class="bi bi-basket3 me-3"></i
+										>Carrito
+									</h1>
+								</div>
+								<ul class="list-group" id="cart-items">
+									<!-- Cart items will be added here dynamically -->
+								</ul>
+								<p class="mt-3 total-carrito">
+									Total Apróx.: ₡<span id="cart-total"
+										>0</span
+									>
+								</p>
+								<button class="custom-btn" id="checkout">
+									Checkout
+								</button>
+								<div class="py-3"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<a href="#">
+			<div class="botonScrollTop">
+				<i class="fas fa-angle-up"></i>
+			</div>
+		</a>
+
+		<div class="bg-white">
+			<div class="py-5 bg-white"></div>
+			<div class="container">
+				<footer class="pt-5">
+					<div class="row">
+						<div class="col-12 col-lg-4 mb-3">
+							<h5 class="nav-link">
+								<a href="index" class="fs-4">INICIO</a>
+							</h5>
+							<h5 class="nav-link">
+								<a
+									href="tienda"
+									class="fs-4"
+									id="tiendaFooter"
+									>TIENDA
+									<img
+										src="img/webplogo.webp"
+										alt=""
+										class="ms-1"
+										style="width: 35px"
+										id="inicioFooter"
+								/></a>
+							</h5>
+							<h5 class="nav-link">
+								<a
+									href="contacto"
+									class="fs-4"
+									id="contactoFooter"
+									>CONTACTO</a
+								>
+							</h5>
+							<h5 class="nav-link">
+								<a
+									href="rendimiento"
+									class="fs-4"
+									id="rendFooter"
+									>RENDIMIENTO</a
+								>
+							</h5>
+						</div>
+
+						<div class="col-12 col-lg-8">
+							<h5 class="fs-2" id="actFooter">
+								Subscríbete a nuestras actualizaciones
+							</h5>
+							<p class="fs-5" id="menFooter">
+								Te enviaremos correos si tenemos nuevas piezas,
+								entre otros.
+							</p>
+							<form id="inscription">
+								<div class="d-flex w-100 gap-2">
+									<input
+										id="inscriptionTxt"
+										type="email"
+										name="email"
+										class="form-control fs-5"
+										placeholder="Email"
+									/>
+									<input
+										class="custom-btn-normal"
+										type="button"
+										style="padding: 5px 15px !important"
+										value="Suscribirse"
+										id="btnSend"
+									/>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-12 text-end">
+							<p class="fs-1 text-danger" id="mensajeAlert"></p>
+						</div>
+					</div>
+
+					<div class="py-4 mt-4 border-top" id="rightsFooter">
+						<p>© 2023 EASYTECH, Todos los derechos reservados.</p>
+					</div>
+				</footer>
+			</div>
+		</div>
+
+		<script>
+			const productTypeSelect = document.getElementById('product-type');
+			const brandNameSelect = document.getElementById('brand-name');
+			const products = document.querySelectorAll('.product');
+
+			function filterProducts() {
+				const selectedProductType = productTypeSelect.value;
+				const selectedBrandName = brandNameSelect.value;
+
+				products.forEach((product) => {
+					const productType =
+						product.classList.contains(selectedProductType) ||
+						selectedProductType === 'all';
+					const brandName =
+						product.classList.contains(selectedBrandName) ||
+						selectedBrandName === 'all';
+
+					if (productType && brandName) {
+						product.style.display = 'block';
+					} else {
+						product.style.display = 'none';
+					}
+				});
+			}
+
+			productTypeSelect.addEventListener('change', filterProducts);
+			brandNameSelect.addEventListener('change', filterProducts);
+		</script>
+
+		<script>
+			window.addEventListener('load', init, false);
+
+			function init() {
+				let email = document.getElementById('inscriptionTxt');
+				let btnEnviar = document.getElementById('btnSend');
+				let expressionEmail =
+					/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+				let alerta = document.getElementById('mensajeAlert');
+
+				btnEnviar.onclick = function () {
+					email = inscriptionTxt.value;
+
+					if (email === '') {
+						alerta.textContent = 'El campo email está vacío';
+						alerta.classList.add('alertaRoja');
+						alerta.classList.remove('alertaVerde');
+					} else if (expressionEmail.test(email) === false) {
+						alerta.textContent = 'Email inválido';
+						alerta.classList.add('alertaRoja');
+						alerta.classList.remove('alertaVerde');
+					} else {
+						alerta.textContent = 'Éxito en registro';
+						alerta.classList.add('alertaVerde');
+						alerta.classList.remove('alertaRoja');
+
+						// SERVICE ID/ TEMPLATE ID / ID FORM/ PUBLIC KEY CUENTA
+						emailjs.sendForm(
+							'service_2hwr3oh',
+							'template_giamtgc',
+							'#inscription',
+							'tuimIRMnGymExu16s'
+						);
+						cleanInputs();
+					}
+				};
+
+				function cleanInputs() {
+					let email = document.getElementById('inscriptionTxt');
+					email.value = '';
+				}
+			}
+
+			function visitarPagina(page) {
+				page = page + '';
+				window.location.href = page;
+			}
+		</script>
+
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+		></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script src="js/tienda.js"></script>
+	</body>
+</html>

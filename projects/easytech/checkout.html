@@ -1,0 +1,574 @@
+ lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Checkout EasyTech</title>
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+			crossorigin="anonymous"
+		></script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+		/>
+
+		<script
+			src="https://kit.fontawesome.com/fa2ce6a4c8.js"
+			crossorigin="anonymous"
+		></script>
+
+		<link rel="stylesheet" href="css/style.css" />
+
+		<style>
+			.product:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			.cart-item {
+				cursor: default;
+			}
+
+			.cart-item:hover {
+				color: white !important;
+				background-color: black;
+			}
+
+			.cart-item:hover .precio {
+				color: white !important;
+				background-color: black;
+			}
+
+			#cart-items {
+				padding: 0 !important;
+				list-style-type: none;
+			}
+
+			.remove-item {
+				background-color: rgb(197, 0, 0);
+				border: 4px solid rgb(197, 0, 0);
+				color: rgb(255, 255, 255);
+				font-size: 1rem;
+				text-align: center;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+
+			.remove-item:hover {
+				color: white;
+				background-color: rgb(145, 0, 0);
+				border: 4px solid rgb(145, 0, 0);
+				box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+			}
+
+			.total-carrito {
+				padding: 0px;
+			}
+
+			.product p {
+				font-size: 1.5rem;
+			}
+
+			.product img {
+				border-radius: 10px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+		</style>
+
+		<link rel="shortcut icon" href="webplogo.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid py-2 mx-4">
+				<a
+					class="navbar-brand d-flex align-items-center"
+					href="index"
+				>
+					<img
+						src="img/webplogo.webp"
+						alt="Logo"
+						width="50"
+						height="50"
+						class="align-text-top me-1"
+					/>
+					<span>EASYTECH</span>
+				</a>
+
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+					style="border: none"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarSupportedContent"
+				>
+					<ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+						<li class="nav-item me-2">
+							<a
+								class="nav-link"
+								aria-current="page"
+								href="tienda"
+								id="navTienda"
+								>TIENDA</a
+							>
+						</li>
+						<li class="nav-item dropdown me-3">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+								id="navPcs"
+							>
+								Computadoras
+							</a>
+							<ul class="dropdown-menu mb-2">
+								<li>
+									<a
+										class="dropdown-item"
+										href="rendimiento"
+										id="navPerf"
+										>Rendimiento</a
+									>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="oficina"
+										id="navOffice"
+										>Oficina</a
+									>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										href="empresas"
+										id="navEmpresa"
+										>Empresas</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item me-2">
+							<a
+								class="nav-link"
+								href="funcionamiento"
+								id="navFunc"
+								>FUNCIONAMIENTO</a
+							>
+						</li>
+						<li class="nav-item me-5">
+							<a
+								class="nav-link"
+								href="contacto"
+								id="navContact"
+								>CONTACTO</a
+							>
+						</li>
+						<li class="nav-item me-2">
+							<a
+								class="nav-link"
+								href="checkout"
+								id="navContact"
+								><span class="me-1">Checkout</span>
+								<i class="bi bi-cart-fill"></i
+							></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<section class="bg-white pt-5">
+			<div class="container">
+				<div class="row g-5">
+					<div class="col-md-5 col-lg-4 order-md-last">
+						<h4
+							class="d-flex justify-content-between align-items-center mb-3"
+						>
+							<span class="text-primary display-6 text-black"
+								>Tu carrito</span
+							>
+							<span class="badge bg-main-color" id="cant-items"
+								>0</span
+							>
+						</h4>
+						<ul class="list-group mb-3" id="cart-items"></ul>
+
+						<ul class="total-carrito fs-5">
+							<li
+								class="list-group-item d-flex justify-content-between"
+							>
+								<span>Total apróximado (CRC)</span>
+								<p>₡<span id="cart-total">0.00</span></p>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-7 col-lg-8">
+						<h4 class="mb-3 display-6">Dirección de facturación</h4>
+						<form
+							class="needs-validation fs-4"
+							id="checkoutForm"
+							novalidate=""
+						>
+							<div class="row g-3">
+								<div class="col-sm-6">
+									<label for="firstName" class="form-label"
+										>Nombre</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="firstName"
+										name="firstName"
+										placeholder=""
+										value=""
+										required=""
+									/>
+									<div class="invalid-feedback">
+										Se requiere un nombre válido.
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<label for="lastName" class="form-label"
+										>Apellido</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="lastName"
+										name="lastName"
+										placeholder=""
+										value=""
+										required=""
+									/>
+									<div class="invalid-feedback">
+										Se requiere un apellido válido.
+									</div>
+								</div>
+
+								<div class="col-12">
+									<label for="email" class="form-label"
+										>Email
+										<span class="text-body-secondary"></span
+									></label>
+									<input
+										type="email"
+										class="form-control"
+										id="email"
+										name="email"
+										placeholder="email@ejemplo.com"
+										value=""
+										required=""
+									/>
+									<div class="invalid-feedback">
+										Ingrese una dirección de correo
+										eletrónico válida.
+									</div>
+								</div>
+
+								<div class="col-12">
+									<label for="address" class="form-label"
+										>Dirección</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="address"
+										name="address"
+										placeholder="1234 Calle"
+										required=""
+									/>
+									<div class="invalid-feedback">
+										Ingrese una dirección válida.
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<label for="country" class="form-label"
+										>País</label
+									>
+									<select
+										class="form-select"
+										id="country"
+										required=""
+									>
+										<option value="">Elegir...</option>
+										<option>Costa Rica</option>
+									</select>
+									<div class="invalid-feedback">
+										Por favor, seleccione un país válido.
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<label for="state" class="form-label"
+										>Provincia</label
+									>
+									<select
+										class="form-select"
+										id="state"
+										required=""
+									>
+										<option value="">Elegir...</option>
+										<option>San José</option>
+										<option>Heredia</option>
+										<option>Cartago</option>
+										<option>Guanacaste</option>
+										<option>Puntarenas</option>
+										<option>Limón</option>
+										<option>Alajuela</option>
+									</select>
+									<div class="invalid-feedback">
+										Ingrese una provincia válida.
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<label for="zip" class="form-label"
+										>Código Postal</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="zip"
+										name="zip"
+										placeholder=""
+										required=""
+									/>
+									<div class="invalid-feedback">
+										Código Postal inválido.
+									</div>
+								</div>
+							</div>
+
+							<hr class="my-4" />
+
+							<h4 class="mb-3">Pago</h4>
+
+							<div class="my-3">
+								<div class="form-check">
+									<input
+										id="credit"
+										name="paymentMethod"
+										type="radio"
+										class="form-check-input"
+										checked=""
+										required=""
+									/>
+									<label class="form-check-label" for="credit"
+										>Tarjeta de crédito</label
+									>
+								</div>
+								<div class="form-check">
+									<input
+										id="debit"
+										name="paymentMethod"
+										type="radio"
+										class="form-check-input"
+										required=""
+									/>
+									<label class="form-check-label" for="debit"
+										>Tarjeta de débito</label
+									>
+								</div>
+							</div>
+
+							<div class="row gy-3">
+								<div class="col-md-6">
+									<label for="cc_name" class="form-label"
+										>Nombre en la tarjeta</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="cc_name"
+										name="cc_name"
+										placeholder=""
+										required=""
+									/>
+									<small class="text-body-secondary">
+										Nombre completo como aparece en la
+										tarjeta
+									</small>
+									<div class="invalid-feedback">
+										Se requiere el nombre en la tarjeta
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="cc_number" class="form-label"
+										>Número de tarjeta de crédito</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="cc_number"
+										placeholder="xxxx-xxxx-xxxx-xxxx"
+										pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"
+										required=""
+										maxlength="19"
+										oninput="formatCreditCardInput(this)"
+									/>
+									<div class="invalid-feedback">
+										Se requiere el número de tarjeta de
+										crédito (formato: xxxx-xxxx-xxxx-xxxx)
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label
+										for="cc_expiration"
+										class="form-label"
+										>Fecha de vencimiento</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="cc_expiration"
+										name="cc_expiration"
+										placeholder="MM/AAAA"
+										pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
+										required=""
+										oninput="formatDateInput(this)"
+										maxlength="7"
+									/>
+									<div class="invalid-feedback">
+										Fecha inválida (formato: MM/AAAA)
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="cc_cvv" class="form-label"
+										>CVV</label
+									>
+									<input
+										type="password"
+										class="form-control"
+										id="cc_cvv"
+										name="cc_cvv"
+										placeholder=""
+										required=""
+										maxlength="3"
+										oninput="formatCVVInput(this)"
+									/>
+									<div class="invalid-feedback">
+										Se requiere el código de seguridad
+									</div>
+								</div>
+							</div>
+
+							<hr class="my-4" />
+
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-12 col-md-12">
+										<div class="row">
+											<div class="col-6">
+												<label
+													for="pagoTotalForm"
+													class="form-label fs-3"
+													>Total a pagar
+													(CRC+IVA)</label
+												>
+											</div>
+											<div class="col-6">
+												<input
+													type="text"
+													class="form-control fs-5"
+													id="pagoTotalForm"
+													name="pagoTotalForm"
+													placeholder=""
+													required
+													disabled
+												/>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<hr class="my-4" />
+							<button
+								class="w-100 custom-btn-normal btn-lg"
+								type="submit"
+							>
+								Realizar pago
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<a href="#">
+			<div class="botonScrollTop">
+				<i class="fas fa-angle-up"></i>
+			</div>
+		</a>
+
+		<script>
+			function formatDateInput(input) {
+				let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+				if (value.length > 2) {
+					value = value.slice(0, 2) + '/' + value.slice(2);
+				}
+				input.value = value;
+			}
+
+			function formatCVVInput(input) {
+				input.value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+			}
+
+			function formatCreditCardInput(input) {
+				input.value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+				// Insert hyphens at appropriate positions
+				let formattedValue = '';
+				for (let i = 0; i < input.value.length; i++) {
+					if (i > 0 && i % 4 === 0) {
+						formattedValue += '-';
+					}
+					formattedValue += input.value[i];
+				}
+
+				input.value = formattedValue;
+			}
+		</script>
+
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script src="js/checkout.js"></script>
+	</body>
+</html>

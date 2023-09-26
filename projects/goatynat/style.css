@@ -289,7 +289,7 @@ a {
 	object-position: center;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 974px) {
 	.card-img-top {
 		height: 15rem;
 	}

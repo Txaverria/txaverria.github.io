@@ -1,0 +1,225 @@
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #8ddaec;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: #666;
+}
+
+::-webkit-scrollbar-track {
+	background: #111;
+}
+
+::-webkit-scrollbar-corner {
+	background: #000;
+}
+
+html,
+body {
+	font-family: "Bebas Neue", sans-serif;
+	font-size: 20px;
+	background-color: black;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+:root {
+	--mainColor: rgba(24, 177, 201);
+	--darkerMainColor: rgb(26, 138, 155);
+}
+
+.custom-btn {
+	background: transparent;
+	border: 4px solid white;
+	color: white;
+	padding: 15px 30px;
+	font-size: 1.7rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	backdrop-filter: blur(10px);
+	transition: all 0.5s ease;
+}
+
+.custom-btn:hover {
+	background-color: var(--mainColor);
+	box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.3);
+	filter: brightness(105%);
+}
+
+.custom-btn-white {
+	background: transparent;
+	border: 4px solid white;
+	color: white;
+	padding: 15px 30px;
+	font-size: 1.7rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 0.5s ease;
+}
+
+.custom-btn-white:hover {
+	background-color: white;
+	color: black;
+}
+
+.custom-btn-normal {
+	background-color: var(--mainColor);
+	border: 4px solid var(--mainColor);
+	color: rgb(255, 255, 255);
+	padding: 15px 30px;
+	font-size: 1.7rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 0.5s ease;
+}
+
+.custom-btn-normal:hover {
+	background-color: var(--darkerMainColor);
+	border: 4px solid var(--darkerMainColor);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+	font-size: 1.5rem;
+	transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+	color: var(--mainColor);
+}
+
+.dropdown-item {
+	font-size: 1.4rem;
+}
+
+.navbar-brand {
+	transform: scale(1.4);
+}
+
+.navbar-brand img {
+	transition: all 0.2s ease;
+}
+
+.navbar-brand span {
+	transition: all 0.2s ease;
+}
+
+.navbar-brand:hover img {
+	transform: scale(1.2);
+	filter: brightness(110%);
+}
+
+.navbar-brand:hover span {
+	color: var(--darkerMainColor);
+	transform: translateX(3px);
+}
+
+.language-btn {
+	border-radius: 3px;
+	transition: all 0.2s ease;
+}
+
+.language-btn:hover {
+	transform: scale(1.1);
+}
+
+.hero-image {
+	background-size: cover;
+	background-position: center;
+	height: 600px;
+	z-index: -1;
+	filter: brightness(40%);
+}
+
+.hero-section .hero-image {
+	transition: all 0.5s ease;
+}
+
+.hero-section:hover .hero-image {
+	filter: brightness(20%);
+}
+
+.contenedor-hero {
+	top: 26%;
+}
+
+.texto-sombra {
+	text-shadow: 6px 6px 7px rgba(0, 0, 0, 0.5);
+}
+
+.texto-parrafo {
+	font-family: "Montserrat", sans-serif;
+	font-size: 1.5rem;
+}
+
+@media (max-width: 991px) {
+	#spanishLanguage {
+		margin-right: 15px;
+	}
+
+	.navbar-collapse {
+		margin-top: 15px;
+	}
+}
+
+.logo-marca {
+	height: 150px;
+}
+
+.imagen-zoom {
+	transition: all 0.3s ease;
+}
+
+.imagen-zoom:hover {
+	transform: scale(1.07);
+}
+
+#logo-marca-efecto {
+	filter: brightness(0);
+	transition: all 0.5s ease;
+}
+#logo-marca-efecto:hover {
+	filter: brightness(0) invert(1);
+}
+
+.bg-main-color {
+	background-color: var(--darkerMainColor);
+}
+
+.imagen-oscura {
+	transition: all 0.3s ease;
+}
+
+.imagen-oscura:hover {
+	filter: brightness(75%);
+}
+
+.botonScrollTop {
+	position: fixed;
+	height: 45px;
+	width: 42px;
+	background-color: var(--mainColor);
+	right: 30px;
+	bottom: 30px;
+	text-align: center;
+	line-height: 45px;
+	color: white;
+	font-size: 25px;
+	border-radius: 5px;
+	cursor: pointer;
+}

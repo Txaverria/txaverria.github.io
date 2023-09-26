@@ -163,6 +163,18 @@ a {
 	transition: all 0.2s ease;
 }
 
+.button-clipboard-copy {
+	border: none;
+	background: black;
+	color: white;
+	padding: 0px 0px;
+	transition: all 0.3s ease;
+}
+
+.button-clipboard-copy:hover {
+	color: #0095ff;
+}
+
 /* Box animated border */
 .avatar-box:hover {
 	scale: 0.95;

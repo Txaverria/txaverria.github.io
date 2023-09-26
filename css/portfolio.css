@@ -5,8 +5,6 @@
 	--dark-primary-color: #162b30;
 }
 
-/* Apply custom styles to the scrollbar */
-/* Track */
 ::-webkit-scrollbar {
 	width: 6px;
 }

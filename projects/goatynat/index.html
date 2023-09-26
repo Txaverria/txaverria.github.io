@@ -1,835 +1,918 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GOATYNAT</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>GOATYNAT</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+			crossorigin="anonymous"
+		/>
 
-    <link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="style.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-    />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+		/>
 
-    <link rel="shortcut icon" href="logo.webp" type="image/x-icon" />
+		<link rel="shortcut icon" href="logo.webp" type="image/x-icon" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <section class="hero-section shadow">
-      <div
-        class="hero-image imagen-hero-blur position-relative"
-        id="imagenHero"
-        style="background-image: url('img/indeximage0.webp')"
-      ></div>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+	<body>
+		<section class="hero-section shadow">
+			<div
+				class="hero-image imagen-hero-blur position-relative"
+				id="imagenHero"
+				style="background-image: url('img/indeximage0.webp')"
+			></div>
 
-      <div class="position-absolute top-0 w-100">
-        <nav
-          class="navbar navbar-expand-lg custom-navbar position-absolute w-100 pt-4"
-          data-bs-theme="dark"
-        >
-          <div class="container">
-            <a class="" href="index.html">
-              <img
-                src="logo.webp"
-                alt="Logo"
-                width="50"
-                height="50"
-                class="d-inline-block nav-link"
-              />
-            </a>
+			<div class="position-absolute top-0 w-100">
+				<nav
+					class="navbar navbar-expand-lg custom-navbar position-absolute w-100 pt-4"
+					data-bs-theme="dark"
+				>
+					<div class="container">
+						<a class="" href="index.html">
+							<img
+								src="logo.webp"
+								alt="Logo"
+								width="50"
+								height="50"
+								class="d-inline-block nav-link"
+							/>
+						</a>
 
-            <button
-              class="navbar-toggler ms-auto"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              style="border: none"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item me-4">
-                  <a class="nav-link" aria-current="page" href="index.html"
-                    ><i class="bi bi-house-fill me-3"></i>INICIO
-                  </a>
-                </li>
-                <li class="nav-item me-4">
-                  <a class="nav-link" aria-current="page" href="tienda.html"
-                    ><i class="bi bi-bag-fill me-3"></i>TIENDA
-                  </a>
-                </li>
-                <li class="nav-item me-4">
-                  <a class="nav-link" href="contacto.html"
-                    ><i class="bi bi-envelope-fill me-3"></i>CONTACTO
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+						<button
+							class="navbar-toggler ms-auto"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#navbarSupportedContent"
+							aria-controls="navbarSupportedContent"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+							style="border: none"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div
+							class="collapse navbar-collapse"
+							id="navbarSupportedContent"
+						>
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item me-4">
+									<a
+										class="nav-link"
+										aria-current="page"
+										href="index.html"
+										><i class="bi bi-house-fill me-3"></i
+										>INICIO
+									</a>
+								</li>
+								<li class="nav-item me-4">
+									<a
+										class="nav-link"
+										aria-current="page"
+										href="tienda.html"
+										><i class="bi bi-bag-fill me-3"></i
+										>TIENDA
+									</a>
+								</li>
+								<li class="nav-item me-4">
+									<a class="nav-link" href="contacto.html"
+										><i class="bi bi-envelope-fill me-3"></i
+										>CONTACTO
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
 
-        <div class="py-5"></div>
-        <div class="py-5"></div>
-        <div class="py-5"></div>
-        <!-- <div class="py-5"></div> -->
-        <div class="container py-5">
-          <div class="row">
-            <div class="col-auto col-md-auto col-sm-5 rounded">
-              <h1 class="mb-1 display-1" id="titulo">GOATYNAT</h1>
-              <h4 class="subtitulo text-white mb-5 fs-3">
-                Calidad impecable a un precio excelente.
-              </h4>
-              <button class="btn custom-btn" onclick="irPagina('tienda')">
-                COMPRAR AHORA <i class="bi bi-bag-heart ms-3"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+				<div class="py-5"></div>
+				<div class="py-5"></div>
+				<div class="py-5"></div>
+				<!-- <div class="py-5"></div> -->
+				<div class="container py-5">
+					<div class="row">
+						<div class="col-auto col-md-auto col-sm-5 rounded">
+							<h1 class="mb-1 display-1" id="titulo">GOATYNAT</h1>
+							<h4 class="subtitulo text-white mb-5 fs-3">
+								Calidad impecable a un precio excelente.
+							</h4>
+							<button
+								class="btn custom-btn"
+								onclick="irPagina('tienda')"
+							>
+								COMPRAR AHORA
+								<i class="bi bi-bag-heart ms-3"></i>
+							</button>
+						</div>
+					</div>
+				</div>
 
-        <div class="py-5"></div>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-auto">
-              <a href="#primero">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  fill="white"
-                  class="bi bi-chevron-down nav-link"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+				<div class="py-5"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-auto">
+							<a href="#primero">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="32"
+									height="32"
+									fill="white"
+									class="bi bi-chevron-down nav-link"
+									viewBox="0 0 16 16"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+									/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <div class="py-5" id="primero"></div>
+		<div class="py-5" id="primero"></div>
 
-    <section>
-      <div class="container bg-white rounded-3 p-5 shadow">
-        <div class="row mb-4">
-          <div class="col-12">
-            <div class="text-center"></div>
-          </div>
-        </div>
+		<section>
+			<div class="container bg-white rounded-3 p-5 shadow">
+				<div class="row mb-4">
+					<div class="col-12">
+						<div class="text-center"></div>
+					</div>
+				</div>
 
-        <div class="row align-items-center mb-4">
-          <div class="col-12 col-lg-8">
-            <h1 class="mb-4 display-1 fuente-cardo">
-              Somos
-              <span style="font-weight: bold; letter-spacing: 3px"
-                >GOATYNAT</span
-              >
-            </h1>
-            <p class="subtitulo">
-              Ofrecemos anillos <strong>personalizados</strong> para cualquier
-              <strong>persona</strong> y <strong>situación</strong>.
-            </p>
-          </div>
-          <div class="col-12 col-lg-4 mb-4 mb-lg-0 text-center">
-            <img
-              class="img-fluid"
-              src="logo.webp"
-              alt="logo"
-              style="width: 200px; filter: invert(1) brightness(0)"
-            />
-          </div>
-        </div>
+				<div class="row align-items-center mb-4">
+					<div class="col-12 col-lg-8">
+						<h1 class="mb-4 display-1 fuente-cardo">
+							Somos
+							<span style="font-weight: bold; letter-spacing: 3px"
+								>GOATYNAT</span
+							>
+						</h1>
+						<p class="subtitulo">
+							Ofrecemos anillos
+							<strong>personalizados</strong> para cualquier
+							<strong>persona</strong> y
+							<strong>situación</strong>.
+						</p>
+					</div>
+					<div class="col-12 col-lg-4 mb-4 mb-lg-0 text-center">
+						<img
+							class="img-fluid"
+							src="logo.webp"
+							alt="logo"
+							style="
+								width: 200px;
+								filter: invert(1) brightness(0);
+							"
+						/>
+					</div>
+				</div>
 
-        <p class="text-center subtitulo">
-          <strong>Ofrecemos a todos nuestros clientes:</strong>
-        </p>
+				<p class="text-center subtitulo">
+					<strong>Ofrecemos a todos nuestros clientes:</strong>
+				</p>
 
-        <div class="row g-3 mb-4">
-          <div class="col-12 col-lg-4">
-            <div class="card p-3 text-center px-4">
-              <div class="user-image">
-                <img
-                  src="img/calidad.svg"
-                  class="mb-3"
-                  width="150"
-                  alt="calidad de productos"
-                />
-              </div>
+				<div class="row g-3 mb-4">
+					<div class="col-12 col-lg-4">
+						<div class="card p-3 text-center px-4">
+							<div class="user-image">
+								<img
+									src="img/calidad.svg"
+									class="mb-3"
+									width="150"
+									alt="calidad de productos"
+								/>
+							</div>
 
-              <div class="user-content mb-3">
-                <h5 class="mb-0 subtitulo">Calidad Excelente</h5>
-                <!-- <span class="fuente-cardo fst-italic fs-4"
+							<div class="user-content mb-3">
+								<h5 class="mb-0 subtitulo">
+									Calidad Excelente
+								</h5>
+								<!-- <span class="fuente-cardo fst-italic fs-4"
                   >Estudiante Universitaria</span
                 > -->
-              </div>
+							</div>
 
-              <div class="user-review">
-                <p>
-                  Cada anillo está confeccionado con piedras semipreciosas de la
-                  más alta calidad, como el jade, cuarzo y ametista.
-                </p>
-              </div>
-            </div>
-          </div>
+							<div class="user-review">
+								<p>
+									Cada anillo está confeccionado con piedras
+									semipreciosas de la más alta calidad, como
+									el jade, cuarzo y ametista.
+								</p>
+							</div>
+						</div>
+					</div>
 
-          <div class="col-12 col-lg-4">
-            <div class="card p-3 text-center px-4">
-              <div class="user-image">
-                <img
-                  src="img/precio.svg"
-                  class="mb-3"
-                  width="150"
-                  alt="precio bueno"
-                />
-              </div>
+					<div class="col-12 col-lg-4">
+						<div class="card p-3 text-center px-4">
+							<div class="user-image">
+								<img
+									src="img/precio.svg"
+									class="mb-3"
+									width="150"
+									alt="precio bueno"
+								/>
+							</div>
 
-              <div class="user-content mb-3">
-                <h5 class="mb-0 subtitulo">Precio Inigualable</h5>
-                <!-- <span class="fuente-cardo fst-italic fs-4"
+							<div class="user-content mb-3">
+								<h5 class="mb-0 subtitulo">
+									Precio Inigualable
+								</h5>
+								<!-- <span class="fuente-cardo fst-italic fs-4"
                   ></span
                 > -->
-              </div>
+							</div>
 
-              <div class="user-review">
-                <p>
-                  Creemos que todos merecen acceder a la elevación espiritual y
-                  la belleza artesanal sin romper el banco.
-                </p>
-              </div>
-            </div>
-          </div>
+							<div class="user-review">
+								<p>
+									Creemos que todos merecen acceder a la
+									elevación espiritual y la belleza artesanal
+									sin romper el banco.
+								</p>
+							</div>
+						</div>
+					</div>
 
-          <div class="col-12 col-lg-4">
-            <div class="card p-3 text-center px-4">
-              <div class="user-image">
-                <img
-                  src="img/espiritualidad.svg"
-                  class="mb-3"
-                  width="150"
-                  alt="experiencia espiritual"
-                />
-              </div>
+					<div class="col-12 col-lg-4">
+						<div class="card p-3 text-center px-4">
+							<div class="user-image">
+								<img
+									src="img/espiritualidad.svg"
+									class="mb-3"
+									width="150"
+									alt="experiencia espiritual"
+								/>
+							</div>
 
-              <div class="user-content mb-3">
-                <h5 class="mb-0 subtitulo">Conexión Espiritual</h5>
-                <!-- <span class="fuente-cardo fst-italic fs-4"
+							<div class="user-content mb-3">
+								<h5 class="mb-0 subtitulo">
+									Conexión Espiritual
+								</h5>
+								<!-- <span class="fuente-cardo fst-italic fs-4"
                   >Profesora Escolar</span
                 > -->
-              </div>
+							</div>
 
-              <div class="user-review">
-                <p>
-                  En un mundo caótico, encontrar una conexión espiritual es
-                  esencial para nuestro bienestar.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+							<div class="user-review">
+								<p>
+									En un mundo caótico, encontrar una conexión
+									espiritual es esencial para nuestro
+									bienestar.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <div class="text-center">
-          <button
-            class="custom-btn-normal"
-            type="button"
-            onclick="irPagina('contacto')"
-          >
-            Más información <i class="bi bi-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </section>
+				<div class="text-center">
+					<button
+						class="custom-btn-normal"
+						type="button"
+						onclick="irPagina('contacto')"
+					>
+						Más información <i class="bi bi-arrow-right"></i>
+					</button>
+				</div>
+			</div>
+		</section>
 
-    <div class="py-5"></div>
+		<div class="py-5"></div>
 
-    <section class="bg-white pt-5 shadow">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-12 col-lg-6 text-center mb-4">
-            <h1 class="mb-4 pt-5 display-1 fuente-cardo">¡Promoción 3x2!</h1>
-            <p class="texto-parrafo mb-4">
-              Por la compra de 2 anillos, llévate uno gratis seleccionado
-              personalmente para ti.
-            </p>
-            <button
-              class="custom-btn-normal"
-              type="button"
-              onclick="irPagina('tienda')"
-            >
-              ¡Comprar ahora! <i class="bi bi-arrow-right"></i>
-            </button>
-          </div>
-          <div class="col-12 col-lg-6">
-            <img
-              class="img-fluid"
-              src="img/promocionalpersona.webp"
-              alt="persona promocionando la promoción"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+		<section class="bg-white pt-5 shadow">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-6 text-center mb-4">
+						<h1 class="mb-4 pt-5 display-1 fuente-cardo">
+							¡Promoción 3x2!
+						</h1>
+						<p class="texto-parrafo mb-4">
+							Por la compra de 2 anillos, llévate uno gratis
+							seleccionado personalmente para ti.
+						</p>
+						<button
+							class="custom-btn-normal"
+							type="button"
+							onclick="irPagina('tienda')"
+						>
+							¡Comprar ahora! <i class="bi bi-arrow-right"></i>
+						</button>
+					</div>
+					<div class="col-12 col-lg-6">
+						<img
+							class="img-fluid"
+							src="img/promocionalpersona.webp"
+							alt="persona promocionando la promoción"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <div class="py-5"></div>
+		<div class="py-5"></div>
 
-    <section>
-      <div class="container bg-white rounded-3 shadow p-5">
-        <div class="row justify-content-center mb-4">
-          <div class="col-12">
-            <div class="text-center">
-              <h1 class="display-1 fuente-cardo mb-4">
-                ¿No crees en nuestros anillos?
-              </h1>
-              <p class="texto-parrafo">
-                ¡Solamente lee las buenas reseñas que nos han dejado nuestros
-                clientes!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row g-3">
-          <div class="col-12 col-lg-4">
-            <div class="card p-3 text-center px-4">
-              <div class="user-image">
-                <img
-                  src="img/rating1.webp"
-                  class="rounded-circle mb-3"
-                  width="150"
-                  alt="persona recomendando"
-                />
-              </div>
+		<section>
+			<div class="container bg-white rounded-3 shadow p-5">
+				<div class="row justify-content-center mb-4">
+					<div class="col-12">
+						<div class="text-center">
+							<h1 class="display-1 fuente-cardo mb-4">
+								¿No crees en nuestros anillos?
+							</h1>
+							<p class="texto-parrafo">
+								¡Solamente lee las buenas reseñas que nos han
+								dejado nuestros clientes!
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="row g-3">
+					<div class="col-12 col-lg-4">
+						<div class="card p-3 text-center px-4">
+							<div class="user-image">
+								<img
+									src="img/rating1.webp"
+									class="rounded-circle mb-3"
+									width="150"
+									alt="persona recomendando"
+								/>
+							</div>
 
-              <div class="user-content mb-3">
-                <h5 class="mb-0 subtitulo">Isabella Rodríguez</h5>
-                <span class="fuente-cardo fst-italic fs-4"
-                  >Estudiante Universitaria</span
-                >
-              </div>
+							<div class="user-content mb-3">
+								<h5 class="mb-0 subtitulo">
+									Isabella Rodríguez
+								</h5>
+								<span class="fuente-cardo fst-italic fs-4"
+									>Estudiante Universitaria</span
+								>
+							</div>
 
-              <div class="user-review">
-                <p>
-                  ¡Este anillo de amatista es simplemente mágico! Desde el
-                  momento en que lo puse en mi dedo, sentí una oleada de
-                  serenidad envolviéndome. La amatista siempre ha estado
-                  relacionada con la espiritualidad y la claridad interior.
-                </p>
-              </div>
+							<div class="user-review">
+								<p>
+									¡Este anillo de amatista es simplemente
+									mágico! Desde el momento en que lo puse en
+									mi dedo, sentí una oleada de serenidad
+									envolviéndome. La amatista siempre ha estado
+									relacionada con la espiritualidad y la
+									claridad interior.
+								</p>
+							</div>
 
-              <div class="ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-            </div>
-          </div>
+							<div class="ratings">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+					</div>
 
-          <div class="col-12 col-lg-4">
-            <div class="card p-3 text-center px-4">
-              <div class="user-image">
-                <img
-                  src="img/rating2.webp"
-                  class="rounded-circle mb-3"
-                  width="150"
-                  alt="persona recomendando"
-                />
-              </div>
+					<div class="col-12 col-lg-4">
+						<div class="card p-3 text-center px-4">
+							<div class="user-image">
+								<img
+									src="img/rating2.webp"
+									class="rounded-circle mb-3"
+									width="150"
+									alt="persona recomendando"
+								/>
+							</div>
 
-              <div class="user-content mb-3">
-                <h5 class="mb-0 subtitulo">Valentina Morales</h5>
-                <span class="fuente-cardo fst-italic fs-4"
-                  >Ingeniera Nuclear</span
-                >
-              </div>
+							<div class="user-content mb-3">
+								<h5 class="mb-0 subtitulo">
+									Valentina Morales
+								</h5>
+								<span class="fuente-cardo fst-italic fs-4"
+									>Ingeniera Nuclear</span
+								>
+							</div>
 
-              <div class="user-review">
-                <p>
-                  Este anillo de jade no solo es hermoso, sino que también se
-                  siente como si estuviera cargado con una energía ancestral.
-                  Siempre he sido una persona que busca la armonía y la conexión
-                  con la naturaleza, y el jade me ha ayudado.
-                </p>
-              </div>
+							<div class="user-review">
+								<p>
+									Este anillo de jade no solo es hermoso, sino
+									que también se siente como si estuviera
+									cargado con una energía ancestral. Siempre
+									he sido una persona que busca la armonía y
+									la conexión con la naturaleza, y el jade me
+									ha ayudado.
+								</p>
+							</div>
 
-              <div class="ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-            </div>
-          </div>
+							<div class="ratings">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+					</div>
 
-          <div class="col-12 col-lg-4">
-            <div class="card p-3 text-center px-4">
-              <div class="user-image">
-                <img
-                  src="img/rating3.webp"
-                  class="rounded-circle mb-3"
-                  width="150"
-                  alt="persona recomendando"
-                />
-              </div>
+					<div class="col-12 col-lg-4">
+						<div class="card p-3 text-center px-4">
+							<div class="user-image">
+								<img
+									src="img/rating3.webp"
+									class="rounded-circle mb-3"
+									width="150"
+									alt="persona recomendando"
+								/>
+							</div>
 
-              <div class="user-content mb-3">
-                <h5 class="mb-0 subtitulo">Alejandra Fernandez</h5>
-                <span class="fuente-cardo fst-italic fs-4"
-                  >Profesora Escolar</span
-                >
-              </div>
+							<div class="user-content mb-3">
+								<h5 class="mb-0 subtitulo">
+									Alejandra Fernandez
+								</h5>
+								<span class="fuente-cardo fst-italic fs-4"
+									>Profesora Escolar</span
+								>
+							</div>
 
-              <div class="user-review">
-                <p>
-                  No puedo dejar de maravillarme ante la belleza y el poder de
-                  este anillo de cuarzo. Desde que lo tengo, he sentido un
-                  aumento en mi energía y claridad mental. El cuarzo es conocido
-                  por su capacidad de amplificar la energía.
-                </p>
-              </div>
+							<div class="user-review">
+								<p>
+									No puedo dejar de maravillarme ante la
+									belleza y el poder de este anillo de cuarzo.
+									Desde que lo tengo, he sentido un aumento en
+									mi energía y claridad mental. El cuarzo es
+									conocido por su capacidad de amplificar la
+									energía.
+								</p>
+							</div>
 
-              <div class="ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+							<div class="ratings">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <div class="py-5"></div>
+		<div class="py-5"></div>
 
-    <section>
-      <div class="container bg-white p-5 rounded-3 shadow">
-        <div class="row align-items-center">
-          <div class="col-12 col-lg-8">
-            <h1 class="mb-4 pt-5 display-1 fuente-cardo">Blog</h1>
-            <p class="texto-parrafo mb-4">
-              ¡Bienvenidos a nuestra sección dedicada a desentrañar los
-              misterios y las maravillas del mundo de los cristales y gemas!
-            </p>
-          </div>
-          <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-            <img class="img-fluid" src="img/blog.svg" alt="blog" />
-          </div>
-        </div>
-        <p class="subtitulo"><strong>Publicaciones destacadas</strong></p>
-        <div class="row">
-          <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-            <div class="card">
-              <img
-                style="height: 18rem; object-fit: cover"
-                src="img/amethyst.webp"
-                class="card-img-top"
-                alt="ametista"
-              />
-              <div class="card-body">
-                <h5 class="card-title">El Aura Encantadora de la Amatista</h5>
-                <p class="card-text">
-                  En el mundo de los cristales y las piedras preciosas, pocas
-                  tienen el encanto y la mística que posee la amatista.
-                </p>
-                <button
-                  class="custom-btn-normal w-100"
-                  type="button"
-                  onclick="irPagina('amethyst')"
-                >
-                  Ver artículo <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-            <div class="card">
-              <img
-                style="height: 18rem; object-fit: cover"
-                src="img/jade.webp"
-                class="card-img-top img-fluid"
-                alt="jade"
-              />
-              <div class="card-body">
-                <h5 class="card-title">La Sabiduría Atemporal del Jade</h5>
-                <p class="card-text">
-                  El jade ha sido venerado durante mucho tiempo en diversas
-                  culturas por su importancia espiritual.
-                </p>
-                <button
-                  class="custom-btn-normal w-100"
-                  type="button"
-                  onclick="irPagina('jade')"
-                >
-                  Ver artículo <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-4">
-            <div class="card">
-              <img
-                style="height: 18rem; object-fit: cover"
-                src="img/quartz.webp"
-                class="card-img-top"
-                alt="cuarzo"
-              />
-              <div class="card-body">
-                <h5 class="card-title">La Energía Vibrante del Cuarzo</h5>
-                <p class="card-text">
-                  Dentro de los tesoros de la Tierra, el cuarzo se alza como un
-                  faro de versatilidad y energía hermoso y buscado por muchos.
-                </p>
-                <button
-                  class="custom-btn-normal w-100"
-                  type="button"
-                  onclick="irPagina('quartz')"
-                >
-                  Ver artículo <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+		<section>
+			<div class="container bg-white p-5 rounded-3 shadow">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-8">
+						<h1 class="mb-4 pt-5 display-1 fuente-cardo">Blog</h1>
+						<p class="texto-parrafo mb-4">
+							¡Bienvenidos a nuestra sección dedicada a
+							desentrañar los misterios y las maravillas del mundo
+							de los cristales y gemas!
+						</p>
+					</div>
+					<div class="col-12 col-lg-4 mb-4 mb-lg-0">
+						<img class="img-fluid" src="img/blog.svg" alt="blog" />
+					</div>
+				</div>
+				<p class="subtitulo">
+					<strong>Publicaciones destacadas</strong>
+				</p>
+				<div class="row">
+					<div class="col-12 col-lg-4 mb-4 mb-lg-0">
+						<div class="card">
+							<img
+								style="height: 18rem; object-fit: cover"
+								src="img/amethyst.webp"
+								class="card-img-top"
+								alt="ametista"
+							/>
+							<div class="card-body">
+								<h5 class="card-title">
+									El Aura Encantadora de la Amatista
+								</h5>
+								<p class="card-text">
+									En el mundo de los cristales y las piedras
+									preciosas, pocas tienen el encanto y la
+									mística que posee la amatista.
+								</p>
+								<button
+									class="custom-btn-normal w-100"
+									type="button"
+									onclick="irPagina('amethyst')"
+								>
+									Ver artículo
+									<i class="bi bi-arrow-right"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4 mb-4 mb-lg-0">
+						<div class="card">
+							<img
+								style="height: 18rem; object-fit: cover"
+								src="img/jade.webp"
+								class="card-img-top img-fluid"
+								alt="jade"
+							/>
+							<div class="card-body">
+								<h5 class="card-title">
+									La Sabiduría Atemporal del Jade
+								</h5>
+								<p class="card-text">
+									El jade ha sido venerado durante mucho
+									tiempo en diversas culturas por su
+									importancia espiritual.
+								</p>
+								<button
+									class="custom-btn-normal w-100"
+									type="button"
+									onclick="irPagina('jade')"
+								>
+									Ver artículo
+									<i class="bi bi-arrow-right"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4">
+						<div class="card">
+							<img
+								style="height: 18rem; object-fit: cover"
+								src="img/quartz.webp"
+								class="card-img-top"
+								alt="cuarzo"
+							/>
+							<div class="card-body">
+								<h5 class="card-title">
+									La Energía Vibrante del Cuarzo
+								</h5>
+								<p class="card-text">
+									Dentro de los tesoros de la Tierra, el
+									cuarzo se alza como un faro de versatilidad
+									y energía hermoso y buscado por muchos.
+								</p>
+								<button
+									class="custom-btn-normal w-100"
+									type="button"
+									onclick="irPagina('quartz')"
+								>
+									Ver artículo
+									<i class="bi bi-arrow-right"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <div class="py-5"></div>
-        <div class="row">
-          <form id="suscribirse">
-            <div class="row justify-content-between align-items-center">
-              <div class="col-12 col-lg-6 text-center">
-                <h1 class="mb-4 display-1 display-1 fuente-cardo">
-                  ¿Quieres recibir actualizaciones?
-                </h1>
-                <p class="texto-parrafo">
-                  Suscríbete a nuestro newspaper personalizado y recibe las
-                  últimas actualizaciones sobre
-                  <span class="fuente-cardo">GOATYNAT</span>.
-                </p>
-              </div>
-              <div
-                class="col-12 col-lg-5 bg-black shadow rounded-3 p-5 text-white"
-              >
-                <h1 class="mb-4 display-3 fuente-cardo">Formulario</h1>
-                <div class="mb-3">
-                  <label class="form-label fuente-cardo fs-4" for="name"
-                    >Nombre</label
-                  >
-                  <input
-                    class="form-control form-control-lg"
-                    type="text"
-                    id="name"
-                    placeholder="Escriba aquí..."
-                    name="name"
-                    required
-                  />
-                </div>
-                <div class="mb-5">
-                  <label class="form-label fuente-cardo fs-4" for="email"
-                    >Email</label
-                  >
-                  <input
-                    class="form-control form-control-lg"
-                    type="email"
-                    placeholder="Escriba aquí..."
-                    id="email"
-                    name="email"
-                    required
-                  />
-                </div>
-                <input
-                  class="custom-btn-normal w-100"
-                  type="submit"
-                  id="inputSuscribirse"
-                  value="Suscribirse"
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
+				<div class="py-5"></div>
+				<div class="row">
+					<form id="suscribirse">
+						<div
+							class="row justify-content-between align-items-center"
+						>
+							<div class="col-12 col-lg-6 text-center">
+								<h1
+									class="mb-4 display-1 display-1 fuente-cardo"
+								>
+									¿Quieres recibir actualizaciones?
+								</h1>
+								<p class="texto-parrafo">
+									Suscríbete a nuestro newspaper personalizado
+									y recibe las últimas actualizaciones sobre
+									<span class="fuente-cardo">GOATYNAT</span>.
+								</p>
+							</div>
+							<div
+								class="col-12 col-lg-5 bg-black shadow rounded-3 p-5 text-white"
+							>
+								<h1 class="mb-4 display-3 fuente-cardo">
+									Formulario
+								</h1>
+								<div class="mb-3">
+									<label
+										class="form-label fuente-cardo fs-4"
+										for="name"
+										>Nombre</label
+									>
+									<input
+										class="form-control form-control-lg"
+										type="text"
+										id="name"
+										placeholder="Escriba aquí..."
+										name="name"
+										required
+									/>
+								</div>
+								<div class="mb-5">
+									<label
+										class="form-label fuente-cardo fs-4"
+										for="email"
+										>Email</label
+									>
+									<input
+										class="form-control form-control-lg"
+										type="email"
+										placeholder="Escriba aquí..."
+										id="email"
+										name="email"
+										required
+									/>
+								</div>
+								<input
+									class="custom-btn-normal w-100"
+									type="submit"
+									id="inputSuscribirse"
+									value="Suscribirse"
+								/>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
 
-    <div class="py-5"></div>
+		<div class="py-5"></div>
 
-    <section>
-      <div class="container bg-white p-5 rounded-3 shadow">
-        <div class="row align-items-center mb-4">
-          <div class="col-12 col-lg-8">
-            <h1 class="mb-4 pt-5 display-1 display-1 fuente-cardo">
-              Preguntas frecuentes
-            </h1>
-            <p class="texto-parrafo">
-              Aquí encontrarás respuestas a las preguntas más frecuentes que
-              surgen en tu viaje hacia el conocimiento y la comprensión.
-            </p>
-          </div>
-          <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-            <img class="img-fluid" src="img/faq.svg" alt="faq" />
-          </div>
-        </div>
+		<section>
+			<div class="container bg-white p-5 rounded-3 shadow">
+				<div class="row align-items-center mb-4">
+					<div class="col-12 col-lg-8">
+						<h1 class="mb-4 pt-5 display-1 display-1 fuente-cardo">
+							Preguntas frecuentes
+						</h1>
+						<p class="texto-parrafo">
+							Aquí encontrarás respuestas a las preguntas más
+							frecuentes que surgen en tu viaje hacia el
+							conocimiento y la comprensión.
+						</p>
+					</div>
+					<div class="col-12 col-lg-4 mb-4 mb-lg-0">
+						<img class="img-fluid" src="img/faq.svg" alt="faq" />
+					</div>
+				</div>
 
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-              >
-                ¿Cómo surgió GOATYNAT?
-              </button>
-            </h2>
-            <div
-              id="collapseOne"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                Nuestro negocio surgió de mi necesidad de eneseñarle al mundo la
-                magia y el poder que tienen estas piedras. Aunque muchas
-                personas no creen en esto, siempre tuve fé de que habría un
-                mercado para ello, y de que las personas podrían querer tener un
-                servicio para conseguir sus propios anillos personalizados.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                ¿Qué hace que estos anillos sean especiales y espirituales?
-              </button>
-            </h2>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                Nuestros anillos están confeccionados a mano con cuidado y amor,
-                utilizando piedras naturales como cuarzo y jade, conocidas por
-                sus propiedades espirituales y energéticas. Cada piedra se elige
-                cuidadosamente por su significado y vibraciones únicas, lo que
-                permite a quienes los usan establecer una conexión más profunda
-                con su espiritualidad.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
-                ¿Cómo puedo saber qué piedra es la adecuada para mí?
-              </button>
-            </h2>
-            <div
-              id="collapseThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                Seleccionar la piedra adecuada es importante para aprovechar sus
-                beneficios espirituales. Ofrecemos información detallada sobre
-                las propiedades de cada piedra en nuestra página web y en la
-                descripción de cada producto. Si tienes dudas, nuestro equipo
-                estará encantado de ayudarte a elegir la piedra que mejor se
-                adapte a tus necesidades espirituales.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFour">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFour"
-                aria-expanded="false"
-                aria-controls="collapseFour"
-              >
-                ¿Los anillos se ajustan a cualquier tamaño?
-              </button>
-            </h2>
-            <div
-              id="collapseFour"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingFour"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                No, nuestros anillos no son ajustables, aunque siempre los
-                creamos con tu talla personalizada, para poder alcanzar el mejor
-                agarre posible del anillo. Para asegurarnos de que obtengas un
-                ajuste perfecto, te recomendamos proporcionar tu medida exacta
-                al realizar el pedido.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseOne"
+								aria-expanded="true"
+								aria-controls="collapseOne"
+							>
+								¿Cómo surgió GOATYNAT?
+							</button>
+						</h2>
+						<div
+							id="collapseOne"
+							class="accordion-collapse collapse show"
+							aria-labelledby="headingOne"
+							data-bs-parent="#accordionExample"
+						>
+							<div class="accordion-body">
+								Nuestro negocio surgió de mi necesidad de
+								eneseñarle al mundo la magia y el poder que
+								tienen estas piedras. Aunque muchas personas no
+								creen en esto, siempre tuve fé de que habría un
+								mercado para ello, y de que las personas podrían
+								querer tener un servicio para conseguir sus
+								propios anillos personalizados.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseTwo"
+								aria-expanded="false"
+								aria-controls="collapseTwo"
+							>
+								¿Qué hace que estos anillos sean especiales y
+								espirituales?
+							</button>
+						</h2>
+						<div
+							id="collapseTwo"
+							class="accordion-collapse collapse"
+							aria-labelledby="headingTwo"
+							data-bs-parent="#accordionExample"
+						>
+							<div class="accordion-body">
+								Nuestros anillos están confeccionados a mano con
+								cuidado y amor, utilizando piedras naturales
+								como cuarzo y jade, conocidas por sus
+								propiedades espirituales y energéticas. Cada
+								piedra se elige cuidadosamente por su
+								significado y vibraciones únicas, lo que permite
+								a quienes los usan establecer una conexión más
+								profunda con su espiritualidad.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseThree"
+								aria-expanded="false"
+								aria-controls="collapseThree"
+							>
+								¿Cómo puedo saber qué piedra es la adecuada para
+								mí?
+							</button>
+						</h2>
+						<div
+							id="collapseThree"
+							class="accordion-collapse collapse"
+							aria-labelledby="headingThree"
+							data-bs-parent="#accordionExample"
+						>
+							<div class="accordion-body">
+								Seleccionar la piedra adecuada es importante
+								para aprovechar sus beneficios espirituales.
+								Ofrecemos información detallada sobre las
+								propiedades de cada piedra en nuestra página web
+								y en la descripción de cada producto. Si tienes
+								dudas, nuestro equipo estará encantado de
+								ayudarte a elegir la piedra que mejor se adapte
+								a tus necesidades espirituales.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingFour">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapseFour"
+								aria-expanded="false"
+								aria-controls="collapseFour"
+							>
+								¿Los anillos se ajustan a cualquier tamaño?
+							</button>
+						</h2>
+						<div
+							id="collapseFour"
+							class="accordion-collapse collapse"
+							aria-labelledby="headingFour"
+							data-bs-parent="#accordionExample"
+						>
+							<div class="accordion-body">
+								No, nuestros anillos no son ajustables, aunque
+								siempre los creamos con tu talla personalizada,
+								para poder alcanzar el mejor agarre posible del
+								anillo. Para asegurarnos de que obtengas un
+								ajuste perfecto, te recomendamos proporcionar tu
+								medida exacta al realizar el pedido.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <div class="py-5"></div>
+		<div class="py-5"></div>
 
-    <div id="imageContainer">
-      <img src="img/indeximage0.webp" alt="Image 1" />
-      <img src="img/indeximage1.webp" alt="Image 2" />
-      <img src="img/indeximage2.webp" alt="Image 3" />
-      <img src="img/indeximage3.webp" alt="Image 4" />
-      <img src="img/indeximage4.webp" alt="Image 5" />
-    </div>
+		<div id="imageContainer">
+			<img src="img/indeximage0.webp" alt="Image 1" />
+			<img src="img/indeximage1.webp" alt="Image 2" />
+			<img src="img/indeximage2.webp" alt="Image 3" />
+			<img src="img/indeximage3.webp" alt="Image 4" />
+			<img src="img/indeximage4.webp" alt="Image 5" />
+		</div>
 
-    <section class="bg-white border-top">
-      <div class="container">
-        <div class="pt-5"></div>
-        <div class="pt-5">
-          <img
-            style="width: 55px; filter: invert(1) brightness(0)"
-            src="logo.webp"
-            alt="logo"
-          />
-        </div>
-        <footer
-          class="d-flex flex-wrap justify-content-between align-items-center pb-4"
-        >
-          <p class="col-md-4 mb-0 text-body-secondary">© 2023 GOATYNAT</p>
+		<section class="bg-white border-top">
+			<div class="container">
+				<div class="pt-5"></div>
+				<div class="pt-5">
+					<img
+						style="width: 55px; filter: invert(1) brightness(0)"
+						src="logo.webp"
+						alt="logo"
+					/>
+				</div>
+				<footer
+					class="d-flex flex-wrap justify-content-between align-items-center pb-4"
+				>
+					<p class="col-md-4 mb-0 text-body-secondary">
+						© 2023 GOATYNAT
+					</p>
 
-          <ul class="nav col-12 col-md-8 justify-content-end">
-            <li class="nav-item">
-              <a href="index.html" class="nav-link px-2 text-body-secondary"
-                >Inicio</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="tienda.html" class="nav-link px-2 text-body-secondary"
-                >Tienda</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="contacto.html" class="nav-link px-2 text-body-secondary"
-                >Contacto</a
-              >
-            </li>
-          </ul>
-        </footer>
-      </div>
-    </section>
+					<ul class="nav col-12 col-md-8 justify-content-end">
+						<li class="nav-item">
+							<a
+								href="index.html"
+								class="nav-link px-2 text-body-secondary"
+								>Inicio</a
+							>
+						</li>
+						<li class="nav-item">
+							<a
+								href="tienda.html"
+								class="nav-link px-2 text-body-secondary"
+								>Tienda</a
+							>
+						</li>
+						<li class="nav-item">
+							<a
+								href="contacto.html"
+								class="nav-link px-2 text-body-secondary"
+								>Contacto</a
+							>
+						</li>
+					</ul>
+				</footer>
+			</div>
+		</section>
 
-    <script>
-      const imageContainer = document.getElementById("imageContainer");
-      const images = document.querySelectorAll("#imageContainer img");
-      let imagesLoaded = 0;
+		<script>
+			function hideImageContainer() {
+				imageContainer.style.display = 'none';
+			}
 
-      function hideImageContainer() {
-        imageContainer.style.display = "none";
-      }
+			function imageLoaded() {
+				imagesLoaded++;
+				if (imagesLoaded === images.length) {
+					hideImageContainer();
+				}
+			}
 
-      function imageLoaded() {
-        imagesLoaded++;
-        if (imagesLoaded === images.length) {
-          hideImageContainer();
-        }
-      }
+			images.forEach((img) => {
+				img.addEventListener('load', imageLoaded);
+				img.addEventListener('error', imageLoaded); // Handle image load errors as well
+			});
+		</script>
 
-      images.forEach((img) => {
-        img.addEventListener("load", imageLoaded);
-        img.addEventListener("error", imageLoaded); // Handle image load errors as well
-      });
-    </script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		<!-- emailjs codigo -->
+		<script>
+			document
+				.getElementById('suscribirse')
+				.addEventListener('submit', function (event) {
+					event.preventDefault();
 
-    <!-- emailjs codigo -->
-    <script>
-      document
-        .getElementById("suscribirse")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
+					email = document.getElementById('email');
+					name = document.getElementById('name');
 
-          email = document.getElementById("email");
-          name = document.getElementById("name");
+					emailjs.sendForm(
+						'service_2hwr3oh',
+						'template_r7tf7rm',
+						'#suscribirse',
+						'tuimIRMnGymExu16s'
+					);
 
-          emailjs.sendForm(
-            "service_2hwr3oh",
-            "template_r7tf7rm",
-            "#suscribirse",
-            "tuimIRMnGymExu16s"
-          );
+					email.value = '';
+					name.value = '';
 
-          email.value = "";
-          name.value = "";
+					Swal.fire({
+						icon: 'success',
+						title: '¡El formulario se ha enviado con éxito!',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+				});
+		</script>
 
-          Swal.fire({
-            icon: "success",
-            title: "¡El formulario se ha enviado con éxito!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
-        });
-    </script>
+		<script>
+			function irPagina(paginaHTML) {
+				page = paginaHTML + '.html';
+				window.location.href = page;
+			}
+		</script>
 
-    <script>
-      function irPagina(paginaHTML) {
-        page = paginaHTML + ".html";
-        window.location.href = page;
-      }
-    </script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+			crossorigin="anonymous"
+		></script>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-
-    <script src="script.js"></script>
-  </body>
+		<script src="script.js"></script>
+	</body>
 </html>

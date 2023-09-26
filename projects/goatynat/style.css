@@ -151,7 +151,7 @@ a {
 	background: transparent;
 	border: 3px solid black;
 	font-weight: bold;
-	font-size: 1.5rem;
+	/* font-size: 1.5rem; */
 	color: black;
 	padding: 10px 30px;
 	transition: all 0.3s ease-in-out;
@@ -281,4 +281,16 @@ a {
 
 #inputSuscribirse:hover {
 	border: 3px solid white;
+}
+
+.card-img-top {
+	height: 30rem;
+	object-fit: cover;
+	object-position: center;
+}
+
+@media (max-width: 576px) {
+	.card-img-top {
+		height: 15rem;
+	}
 }

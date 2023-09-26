@@ -854,16 +854,8 @@
 				imageContainer.style.display = 'none';
 			}
 
-			function imageLoaded() {
-				imagesLoaded++;
-				if (imagesLoaded === images.length) {
-					hideImageContainer();
-				}
-			}
-
-			images.forEach((img) => {
-				img.addEventListener('load', imageLoaded);
-				img.addEventListener('error', imageLoaded); // Handle image load errors as well
+			window.addEventListener('load', function () {
+				setTimeout(hideImageContainer, 2000); // 2000 milliseconds = 2 seconds
 			});
 		</script>
 

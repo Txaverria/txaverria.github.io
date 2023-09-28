@@ -80,8 +80,8 @@
 								<a
 									class="nav-link"
 									aria-current="page"
-									href="#about-me"
-									>About me</a
+									href="#skills"
+									>Skills</a
 								>
 							</li>
 							<li class="nav-item">
@@ -115,9 +115,13 @@
 						>
 							Hey, I'm Isaac<span class="blink-span"></span>
 						</h1>
-						<h4 class="mb-4">Web Designer and Dev</h4>
+						<h4 class="mb-4">Web Designer and Dev.</h4>
 						<div class="d-flex w-100 gap-2 flex-column flex-lg-row">
-							<button type="button" class="custom-btn">
+							<button
+								type="button"
+								class="custom-btn"
+								onclick="window.location.href = 'files/cv.pdf'"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="26"
@@ -132,7 +136,11 @@
 								</svg>
 								Check CV
 							</button>
-							<button type="button" class="custom-btn">
+							<button
+								type="button"
+								class="custom-btn"
+								onclick="window.location.href = '#contact'"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="26"
@@ -154,25 +162,51 @@
 			<div class="py-4 border-bottom"></div>
 		</section>
 
-		<div class="py-3"></div>
+		<div class="py-5"></div>
 
 		<section class="py-5">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-8">
+						<h1 class="display-4 fw-bold">About me</h1>
+						<p class="fs-4 mb-5 text-justify">
+							<b>This is who I am:</b> <br />
+							A passionate person who is willing to work, learn
+							and give his best effort on every project, with
+							advanced knowledge of computers, excellent
+							communication skills, and creative thinking and
+							approaches for tasks.
+						</p>
+					</div>
+				</div>
+				<div class="text-center">
+					<h3>Just look at this retro-console-themed portfolio.</h3>
+					<p>
+						I've added rounded corners and smooth animations to
+						modernize it.
+					</p>
+				</div>
+
+				<div class="py-4"></div>
+			</div>
+		</section>
+
+		<h2 class="display-6 fw-bold text-center">Here's more about me:</h2>
+
+		<section class="py-4" id="projects">
 			<div class="container">
 				<h1 class="display-4 fw-bold">
 					Projects<span class="blink-span"></span>
 				</h1>
 				<p class="fs-4 mb-5">
-					Here are some of the projects I've created. Click them for
-					more info.
+					Here are some of the projects I've created. Click them to
+					review them thoroughly.
 				</p>
 				<div
 					class="row text-center justify-content-center align-items-center g-2"
 				>
 					<div class="col-12 col-md-6">
-						<a
-							href="projects/goatynat/index"
-							target="”_blank”"
-						>
+						<a href="projects/goatynat/index" target="”_blank”">
 							<div class="card-project px-5 px-md-2">
 								<img
 									width="96"
@@ -186,7 +220,7 @@
 								</h2>
 								<p class="fs-4 text-decoration-underline">
 									Redesigned a startup with an enhanced new
-									website and logo
+									website and logo.
 								</p>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -209,10 +243,7 @@
 						</a>
 					</div>
 					<div class="col-12 col-md-6">
-						<a
-							href="projects/easytech/index"
-							target="”_blank”"
-						>
+						<a href="projects/easytech/index" target="”_blank”">
 							<div class="card-project px-5 px-md-2">
 								<img
 									width="96"
@@ -227,7 +258,7 @@
 								</h2>
 								<p class="fs-4 text-decoration-underline">
 									Created a functional website, design
-									pattern, and logo
+									pattern, and logo.
 								</p>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -253,18 +284,19 @@
 			</div>
 		</section>
 
-		<div class="py-4"></div>
-
-		<section class="py-5">
+		<section class="py-5 border-bottom" id="skills">
 			<div class="container">
 				<h1 class="display-4 fw-bold">
 					Skills<span class="blink-span"></span>
 				</h1>
-				<p class="fs-4 mb-5">
+				<p class="fs-4 mb-4">
 					The utilities at my disposal for imagining, designing and
 					developing.
 				</p>
-				<div class="row row-cols-4 text-center align-items-center g-2">
+				<h2 class="display-6 fw-bold mb-3">Web Development</h2>
+				<div
+					class="row row-cols-4 text-center align-items-center g-2 mb-4"
+				>
 					<div class="col-12 col-md-6 col-lg-3">
 						<div class="card-skill px-2">
 							<img
@@ -275,7 +307,7 @@
 								alt="html-5--v1"
 							/>
 							<h2 class="fw-bold">HTML5</h2>
-							<p class="fs-5">Tags and document structure</p>
+							<p class="fs-5">Tags and document structure.</p>
 						</div>
 					</div>
 					<div class="col-12 col-md-6 col-lg-3">
@@ -289,7 +321,7 @@
 							/>
 							<h2 class="fw-bold">CSS</h2>
 							<p class="fs-5">
-								Styling and user appeal/experience
+								Styling and user appeal/experience.
 							</p>
 						</div>
 					</div>
@@ -303,7 +335,9 @@
 								alt="javascript"
 							/>
 							<h2 class="fw-bold">JavaScript</h2>
-							<p class="fs-5">Scripting, and website enhancing</p>
+							<p class="fs-5">
+								Scripting, and website enhancing.
+							</p>
 						</div>
 					</div>
 					<div class="col-12 col-md-6 col-lg-3">
@@ -316,16 +350,47 @@
 								alt="bootstrap"
 							/>
 							<h2 class="fw-bold">Bootstrap 5</h2>
-							<p class="fs-5">Responsiveness and appearence</p>
+							<p class="fs-5">Responsiveness and appearence.</p>
+						</div>
+					</div>
+				</div>
+				<h2 class="display-6 fw-bold mb-3">General coding</h2>
+				<div
+					class="row row-cols-4 text-center align-items-center g-2 mb-4"
+				>
+					<div class="col-12 col-md-6 col-lg-3">
+						<div class="card-skill px-2">
+							<img
+								height="75"
+								class="mb-4"
+								src="img/portfolio/python.webp"
+								alt="html-5--v1"
+							/>
+							<h2 class="fw-bold">Python</h2>
+							<p class="fs-5">
+								Versatile language for coding tasks.
+							</p>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 col-lg-3">
+						<div class="card-skill px-2">
+							<img
+								height="75"
+								class="mb-4"
+								src="img/portfolio/java.webp"
+								alt="css3"
+							/>
+							<h2 class="fw-bold">Java</h2>
+							<p class="fs-5">Robust language for programming.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<div class="py-4"></div>
+		<div class="py-5"></div>
 
-		<section class="py-5">
+		<section class="py-5" id="contact">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-12 col-lg-5">

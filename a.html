@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+			}
+
+			.container {
+				width: 50%; /* 50% of the parent container's width */
+				max-width: 500px; /* Maximum width for responsiveness */
+				height: auto; /* Let the height adjust based on content */
+				background-color: #3498db;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+				transition: width 0.5s ease; /* Add easing animation to the width property */
+			}
+
+			button {
+				background-color: #e74c3c;
+				color: #fff;
+				border: none;
+				padding: 10px 20px;
+				cursor: pointer;
+			}
+
+			button:focus {
+				outline: none;
+			}
+		</style>
+		<title>Responsive Container Animation</title>
+	</head>
+	<body>
+		<div class="container">
+			<button id="enlargeButton">Enlarge</button>
+		</div>
+		<script>
+			const container = document.querySelector('.container');
+			const enlargeButton = document.getElementById('enlargeButton');
+			let isEnlarged = false;
+
+			enlargeButton.addEventListener('click', () => {
+				if (isEnlarged) {
+					container.style.width = '50%';
+				} else {
+					container.style.width = '100%';
+				}
+				isEnlarged = !isEnlarged;
+			});
+		</script>
+	</body>
+</html>

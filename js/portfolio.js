@@ -89,24 +89,24 @@ taskbarStart.addEventListener('click', () => {
 });
 
 function updateTime() {
-    const clockElement = document.getElementById('clock');
-    const currentTime = new Date();
-    let hours = currentTime.getHours();
-    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+	const clockElement = document.getElementById('clock');
+	const currentTime = new Date();
+	let hours = currentTime.getHours();
+	const minutes = currentTime.getMinutes().toString().padStart(2, '0');
 
-    let amPm = 'AM';
+	let amPm = 'AM';
 
-    if (hours > 12) {
-        hours -= 12;
-        amPm = 'PM';
-    }
+	if (hours > 12) {
+		hours -= 12;
+		amPm = 'PM';
+	}
 
-    hours = hours.toString().padStart(2, '');
+	hours = hours.toString().padStart(2, '');
 
-    const timeString = `${hours}:${minutes} ${amPm}`;
-    clockElement.textContent = timeString;
+	const timeString = `${hours}:${minutes} ${amPm}`;
+	clockElement.textContent = timeString;
 }
 
 // Update the time immediately and then every second
 updateTime();
-setInterval(updateTime, 60000);
+setInterval(updateTime, 10000);

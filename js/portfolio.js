@@ -22,6 +22,7 @@ const container = document.getElementById('container-console');
 const closeButton = document.getElementById('closeButton');
 const maximizeButton = document.getElementById('maximizeButton');
 const hideButton = document.getElementById('hideButton');
+const taskbarStart = document.getElementById('taskbarStart');
 const taskbarItem = document.getElementById('taskbarItem');
 const taskbarItemImg = taskbarItem.querySelector('img');
 
@@ -82,3 +83,30 @@ function showWindow() {
 	// Disable the second event listener
 	taskbarItem.removeEventListener('click', showWindow);
 }
+
+taskbarStart.addEventListener('click', () => {
+	window.location.href = '#about-me';
+});
+
+function updateTime() {
+    const clockElement = document.getElementById('clock');
+    const currentTime = new Date();
+    let hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+
+    let amPm = 'AM';
+
+    if (hours > 12) {
+        hours -= 12;
+        amPm = 'PM';
+    }
+
+    hours = hours.toString().padStart(2, '');
+
+    const timeString = `${hours}:${minutes} ${amPm}`;
+    clockElement.textContent = timeString;
+}
+
+// Update the time immediately and then every second
+updateTime();
+setInterval(updateTime, 60000);

@@ -20,6 +20,12 @@
 			.avatar-box::after {
 				background-image: url(img/portfolio/avatar.webp);
 			}
+
+			@media (max-width: 465px) {
+				#flexbox-console-container {
+					height: 450px;
+				}
+			}
 		</style>
 
 		<link
@@ -162,7 +168,7 @@
 			<div class="py-4 border-bottom"></div>
 		</section>
 
-		<section class="py-5 border-bottom">
+		<section class="py-5 border-bottom" id="about-me">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-12 col-lg-8">
@@ -212,11 +218,16 @@
 								id="closeButton"
 							/>
 						</div>
-						<div class="rounded-bottom border-top border-3 p-4">
+						<div
+							class="rounded-bottom border-top border-3 px-4 pt-2"
+						>
 							<h2 class="mb-0">Just look at my portfolio</h2>
 							<p class="mb-0">> It tells you a lot about me</p>
 							<p class="mb-0">
-								> I've done a retro console portfolio
+								> I did a retro console portfolio
+							</p>
+							<p class="mb-0">
+								> This window has working buttons!
 							</p>
 							<p class="mb-0">
 								> Isn't it cool?<span class="blink-span"></span>
@@ -226,11 +237,12 @@
 				</div>
 
 				<div
-					class="d-flex justify-content align-items-start border border-3"
+					class="d-flex justify-content align-items-center border border-3"
 				>
 					<div
 						class="border-end border-3 p-2 d-flex align-items-center"
-						style="cursor: default"
+						style="cursor: pointer"
+						id="taskbarStart"
 					>
 						<img
 							width="20"
@@ -243,8 +255,8 @@
 						<h6 class="mb-0 me-2">Start</h6>
 					</div>
 					<div
-						class="border-end border-3 p-2 d-flex align-items-center"
-						style="cursor: default;"
+						class="border-end border-3 p-2 d-flex align-items-center me-auto"
+						style="cursor: default"
 						id="taskbarItem"
 					>
 						<h6 class="mb-0 mx-2">Terminal</h6>
@@ -257,11 +269,15 @@
 							alt="sort-up"
 						/>
 					</div>
+
+					<div class="mx-2" id="clock"></div>
 				</div>
 			</div>
 		</section>
 
-		<h2 class="display-6 fw-bold text-center py-4">Here's more about me:</h2>
+		<h2 class="display-6 fw-bold text-center py-4">
+			Here's more about me:
+		</h2>
 
 		<section class="pb-5 border-bottom" id="projects">
 			<div class="container">

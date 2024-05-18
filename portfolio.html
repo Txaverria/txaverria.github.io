@@ -6,28 +6,17 @@
 		<meta name="description" content="Portfolio website for Isaac Ch." />
 
 		<title>Portfolio</title>
+
 		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
-			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-			crossorigin="anonymous"
-			defer
+			href="node_modules/bootstrap/dist/css/bootstrap.min.css"
 		/>
+		<link
+			rel="stylesheet"
+			href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+
 		<link rel="stylesheet" href="css/portfolio.css" />
-
-		<style>
-			/* Avatar Image */
-			.avatar-box::after {
-				background-image: url(img/portfolio/avatar.webp);
-			}
-
-			@media (max-width: 465px) {
-				#flexbox-console-container {
-					height: 450px;
-				}
-			}
-		</style>
-
 		<link
 			rel="shortcut icon"
 			href="img/white_cube.webp"
@@ -128,18 +117,10 @@
 								class="custom-btn"
 								onclick="window.open('files/cv.pdf','_blank')"
 							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="26"
-									height="26"
-									fill="currentColor"
+								<i
 									class="bi bi-file-earmark-arrow-down-fill mb-1"
-									viewBox="0 0 16 16"
-								>
-									<path
-										d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"
-									/>
-								</svg>
+									style="height: 26"
+								></i>
 								Check CV
 							</button>
 							<button
@@ -147,18 +128,10 @@
 								class="custom-btn"
 								onclick="window.location.href = '#contact'"
 							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="26"
-									height="26"
-									fill="currentColor"
+								<i
 									class="bi bi-person-fill mb-1"
-									viewBox="0 0 16 16"
-								>
-									<path
-										d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-									/>
-								</svg>
+									style="height: 26"
+								></i>
 								Contact
 							</button>
 						</div>
@@ -223,9 +196,7 @@
 						>
 							<h2 class="mb-0">Just look at my portfolio</h2>
 							<p class="mb-0">> It tells you a lot about me</p>
-							<p class="mb-0">
-								> I chose a retro console theme
-							</p>
+							<p class="mb-0">> I chose a retro console theme</p>
 							<p class="mb-0">
 								> This window has working buttons!
 							</p>
@@ -275,11 +246,11 @@
 			</div>
 		</section>
 
-		<h2 class="display-6 fw-bold text-center py-4">
+		<h2 class="display-6 fw-bold text-center py-4" id="projects">
 			Here's more about me:
 		</h2>
 
-		<section class="pb-5 border-bottom" id="projects">
+		<section class="pb-5 border-bottom">
 			<div class="container">
 				<h1 class="display-4 fw-bold">
 					Projects<span class="blink-span"></span>
@@ -288,85 +259,52 @@
 					Here are some of the projects I've created. Click them to
 					review them thoroughly.
 				</p>
-				<div
-					class="row text-center justify-content-center align-items-center g-2"
-				>
-					<div class="col-12 col-md-6">
-						<a href="projects/goatynat/index" target="”_blank”">
-							<div class="card-project px-5 px-md-2">
-								<img
-									width="96"
-									height="96"
-									class="mb-4 logo-white"
-									src="img/portfolio/logogoaty.webp"
-									alt="html-5--v1"
-								/>
-								<h2 class="fw-bold mb-3">
-									Startup Company Website
-								</h2>
-								<p class="fs-4 text-decoration-underline">
-									Redesigned a startup with an enhanced new
-									website and logo.
-								</p>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="26"
-									height="26"
-									fill="currentColor"
-									class="bi bi-box-arrow-up-right"
-									viewBox="0 0 16 16"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-									/>
-									<path
-										fill-rule="evenodd"
-										d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-									/>
-								</svg>
+				<ul class="list-group mb-4">
+					<li class="list-group-item project-item p-0">
+						<a
+							href="projects/goatynat/index"
+							class="d-flex align-items-lg-center project-anchor p-4 py-5"
+							><img
+								class="logo-white me-3 project-image"
+								src="img/portfolio/logogoaty.webp"
+								alt="startup company website logo" />
+							<div
+								class="me-auto text-decoration-underline fs-4 fs-5 fs-6"
+							>
+								<span class="fw-bold"
+									>Startup Company:<br
+								/></span>
+								Created an website for a startup company with an
+								enhanced new aesthetic and logo
 							</div>
-						</a>
-					</div>
-					<div class="col-12 col-md-6">
-						<a href="projects/easytech/index" target="”_blank”">
-							<div class="card-project px-5 px-md-2">
-								<img
-									width="96"
-									height="96"
-									class="mb-4"
-									src="img/portfolio/logoeasytech.webp"
-									alt="css3"
-								/>
-
-								<h2 class="fw-bold mb-3">
-									Computer Business Website
-								</h2>
-								<p class="fs-4 text-decoration-underline">
-									Created a functional website, design
-									pattern, and logo.
-								</p>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="26"
-									height="26"
-									fill="currentColor"
-									class="bi bi-box-arrow-up-right"
-									viewBox="0 0 16 16"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-									/>
-									<path
-										fill-rule="evenodd"
-										d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-									/>
-								</svg>
+							<i
+								class="ms-3 bi bi-box-arrow-up-right fs-4 fs-5"
+							></i
+						></a>
+					</li>
+					<li class="list-group-item project-item p-0">
+						<a
+							href="projects/goatynat/index"
+							class="d-flex align-items-lg-center project-anchor p-4 py-5"
+							><img
+								class="me-3 project-image"
+								src="img/portfolio/logoeasytech.webp"
+								alt="startup company website logo" />
+							<div
+								class="me-auto text-decoration-underline fs-4 fs-5 fs-6"
+							>
+								<span class="fw-bold"
+									>PC Equipment Business:<br
+								/></span>
+								Created an all-new functional website, design
+								pattern, and logo for a PC equipment business
 							</div>
-						</a>
-					</div>
-				</div>
+							<i
+								class="ms-3 bi bi-box-arrow-up-right fs-4 fs-5"
+							></i
+						></a>
+					</li>
+				</ul>
 			</div>
 		</section>
 
@@ -379,120 +317,113 @@
 					The utilities at my disposal for imagining, designing and
 					developing.
 				</p>
-				<h2 class="display-6 fw-bold mb-3">Web Development</h2>
-				<div
-					class="row row-cols-4 text-center align-items-center g-2 mb-4"
-				>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								width="96"
-								height="96"
-								class="mb-4"
-								src="img/portfolio/html-5--v1.webp"
-								alt="html-5--v1"
-							/>
-							<h2 class="fw-bold">HTML5</h2>
-							<p class="fs-5">Tags and document structure.</p>
-						</div>
+				<div class="row">
+					<div class="col-12 col-lg-4 skill-group p-4">
+						<h2 class="display-6 fw-bold mb-3">Web Development</h2>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/html-5.webp"
+									alt="html5 logo"
+									class="skill-image"
+								/>
+								HTML5
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/css3.webp"
+									alt="css3 logo"
+									class="skill-image"
+								/>
+								CSS
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/javascript.webp"
+									alt="javascript logo"
+									class="skill-image"
+								/>
+								JavaScript
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/nodejs.webp"
+									alt="nodejs logo"
+									class="skill-image"
+								/>
+								Node.js (NPM)
+							</li>
+							<!-- <li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/html-5.webp"
+									alt=""
+									class="skill-image"
+								/>
+								Database Knowledge:
+							</li> -->
+						</ul>
 					</div>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								width="96"
-								height="96"
-								class="mb-4"
-								src="img/portfolio/css3.webp"
-								alt="css3"
-							/>
-							<h2 class="fw-bold">CSS</h2>
-							<p class="fs-5">
-								Styling and user appeal/experience.
-							</p>
-						</div>
+
+					<div class="col-12 col-lg-4 skill-group p-4">
+						<h2 class="display-6 fw-bold mb-3">Design</h2>
+
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/figma.webp"
+									alt="figma logo"
+									class="skill-image"
+								/>
+								Figma
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/ps.webp"
+									alt="photoshop logo"
+									class="skill-image"
+								/>
+								Photoshop
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="https://img.icons8.com/color/96/design--v1.png"
+									alt="design-representing logo"
+									class="skill-image"
+								/>
+								UI/UX
+							</li>
+						</ul>
 					</div>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								width="96"
-								height="96"
-								class="mb-4"
-								src="img/portfolio/javascript.webp"
-								alt="javascript"
-							/>
-							<h2 class="fw-bold">JavaScript</h2>
-							<p class="fs-5">
-								Scripting, and website enhancing.
-							</p>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								width="96"
-								height="96"
-								class="mb-4"
-								src="img/portfolio/bootstrap.webp"
-								alt="bootstrap"
-							/>
-							<h2 class="fw-bold">Bootstrap 5</h2>
-							<p class="fs-5">Responsiveness and appearence.</p>
-						</div>
-					</div>
-				</div>
-				<h2 class="display-6 fw-bold mb-3">General</h2>
-				<div
-					class="row row-cols-4 text-center align-items-center g-2 mb-4"
-				>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								height="75"
-								class="mb-4"
-								src="img/portfolio/python.webp"
-								alt="html-5--v1"
-							/>
-							<h2 class="fw-bold">Python</h2>
-							<p class="fs-5">Versatile language for coding.</p>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								height="75"
-								class="mb-4"
-								src="img/portfolio/java.webp"
-								alt="css3"
-							/>
-							<h2 class="fw-bold">Java</h2>
-							<p class="fs-5">Robust language for programming.</p>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								width="75"
-								height="75"
-								class="mb-4"
-								src="https://img.icons8.com/color/96/3d-select--v1.png"
-								alt="3d-select--v1"
-							/>
-							<h2 class="fw-bold">OOP</h2>
-							<p class="fs-5">Object Oriented Programming.</p>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 col-lg-3">
-						<div class="card-skill px-2">
-							<img
-								width="75"
-								height="75"
-								class="mb-4"
-								src="https://img.icons8.com/color/96/design--v1.png"
-								alt="design--v1"
-							/>
-							<h2 class="fw-bold">Design & UX</h2>
-							<p class="fs-5">To look and work great.</p>
-						</div>
+
+					<div class="col-12 col-lg-4 skill-group p-4">
+						<h2 class="display-6 fw-bold mb-3">General</h2>
+
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/python.webp"
+									alt="python logo"
+									class="skill-image"
+								/>
+								Python
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="img/portfolio/skills/java.webp"
+									alt="java logo"
+									class="skill-image"
+								/>
+								Java
+							</li>
+							<li class="list-group-item skill-item">
+								<img
+									src="https://img.icons8.com/color/96/3d-select--v1.png"
+									alt="object oriented programming logo"
+									class="skill-image"
+								/>
+								Object Oriented Programming
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -503,7 +434,7 @@
 		<section class="py-5" id="contact">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-12 col-lg-5">
+					<div class="col-12 col-lg-6">
 						<h1 class="display-4 fw-bold">
 							Contact<span class="blink-span"></span>
 						</h1>
@@ -514,183 +445,91 @@
 							Ask away!
 						</p>
 					</div>
-					<div class="col-12 col-lg-7">
-						<div class="row row-cols-1 g-2">
-							<div class="col">
-								<div class="contact-info">
-									<div class="row" style="margin-top: 0.5rem">
-										<div class="col me-auto">
-											<h4>
-												<span>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="26"
-														height="26"
-														fill="currentColor"
-														class="bi bi-envelope-fill mb-1"
-														viewBox="0 0 16 16"
-													>
-														<path
-															d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"
-														/>
-													</svg>
-												</span>
-												Email
-											</h4>
-										</div>
-										<div
-											class="col-12 col-md-auto text-end"
-										>
-											<span>
-												<h4>
-													<a
-														href="mailto:isaac.chc24@gmail.com"
-														class="custom-anchor me-2"
-														style="
-															text-decoration: underline;
-														"
-														>isaac.chc24@gmail.com</a
-													>
-													<button
-														type="button"
-														class="button-clipboard-copy"
-														onclick="copyText('isaac.chc24@gmail.com')"
-														aria-label="Copy to clipboard"
-													>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="26"
-															height="26"
-															fill="currentColor"
-															class="bi bi-clipboard mb-1"
-															viewBox="0 0 16 16"
-														>
-															<path
-																d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-															/>
-															<path
-																d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
-															/>
-														</svg>
-													</button>
-												</h4>
-											</span>
-										</div>
-									</div>
+					<div class="col-12 col-lg-6">
+						<ul class="ps-0 mb-0">
+							<li class="contact-info d-flex align-items-center">
+								<div
+									class="me-auto fw-bold d-flex align-items-center text-contact"
+								>
+									<i
+										class="bi bi-envelope-fill me-2"
+										style="height: 26"
+									></i
+									>Email
 								</div>
-							</div>
-							<div class="col">
-								<div class="contact-info">
-									<div class="row" style="margin-top: 0.5rem">
-										<div class="col-md-auto me-auto">
-											<h4>
-												<span>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="26"
-														height="26"
-														fill="currentColor"
-														class="bi bi-linkedin mb-1"
-														viewBox="0 0 16 16"
-													>
-														<path
-															d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.647 1.248h.016zm4.908 8.212V9.359c0-.216.016-.464.08-.586.173-.431.568-.878 1.264-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
-														/>
-													</svg>
-												</span>
-												LinkedIn
-											</h4>
-										</div>
-										<div
-											class="col-12 col-md-auto text-end"
-										>
-											<a
-												href="https://www.linkedin.com/in/isaachavarria/"
-												class="contact-info-anchor"
-											>
-												<h4>
-													<span
-														class="me-2"
-														style="
-															text-decoration: underline;
-														"
-														>isaachavarria</span
-													>
-													<span>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="26"
-															height="26"
-															fill="currentColor"
-															class="bi bi-arrow-right-square mb-1"
-															viewBox="0 0 16 16"
-														>
-															<path
-																fill-rule="evenodd"
-																d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
-															/>
-														</svg>
-													</span>
-												</h4>
-											</a>
-										</div>
-									</div>
+								<div class="d-flex align-items-center">
+									<a
+										href="mailto:isaac.chc24@gmail.com"
+										class="custom-anchor me-3 text-contact"
+										style="text-decoration: underline"
+										>isaac.chc24@gmail.com</a
+									>
+									<button
+										type="button"
+										class="button-clipboard-copy text-contact"
+										onclick="copyText('isaac.chc24@gmail.com')"
+										aria-label="Copy to clipboard"
+									>
+										<i
+											class="bi bi-clipboard mb-1"
+											style="height: 26"
+										></i>
+									</button>
 								</div>
-							</div>
-							<div class="col">
-								<div class="contact-info">
-									<div class="row" style="margin-top: 0.5rem">
-										<div class="col-5 me-auto">
-											<h4>
-												<span>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="26"
-														height="26"
-														fill="currentColor"
-														class="bi bi-phone-fill mb-1"
-														viewBox="0 0 16 16"
-													>
-														<path
-															d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"
-														/>
-													</svg>
-												</span>
-												Phone
-											</h4>
-										</div>
-										<div
-											class="col-12 col-md-auto text-end"
-										>
-											<a
-												href="mailto:isaac.chc24@gmail.com?subject=Hey,%20I%20have%20a%20job%20offering%20for%20you!"
-												class="contact-info-anchor"
-											>
-												<h4>
-													<span class="me-2"
-														>Ask me via email</span
-													>
-													<span>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															width="26"
-															height="26"
-															fill="currentColor"
-															class="bi bi-envelope-paper mb-1"
-															viewBox="0 0 16 16"
-														>
-															<path
-																d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z"
-															/>
-														</svg>
-													</span>
-												</h4>
-											</a>
-										</div>
-									</div>
+							</li>
+							<li class="contact-info d-flex align-items-center">
+								<div
+									class="me-auto fw-bold d-flex align-items-center text-contact"
+								>
+									<i
+										class="bi bi-linkedin me-2"
+										style="height: 26"
+									></i
+									>LinkedIn
 								</div>
-							</div>
-						</div>
+
+								<a
+									href="https://www.linkedin.com/in/isaachavarria/"
+									class="contact-info-anchor d-flex text-contact"
+								>
+									<span
+										class="me-3"
+										style="text-decoration: underline"
+										>isaachavarria</span
+									>
+									<span>
+										<i
+											class="bi bi-arrow-right-square mb-1"
+											style="height: 26"
+										></i>
+									</span>
+								</a>
+							</li>
+							<li class="contact-info d-flex align-items-center">
+								<div
+									class="me-auto fw-bold d-flex align-items-center text-contact"
+								>
+									<i
+										class="bi bi-phone-fill me-2"
+										style="height: 26"
+									></i
+									>Phone
+								</div>
+
+								<a
+									href="mailto:isaac.chc24@gmail.com?subject=Hey,%20I%20have%20a%20job%20offering%20for%20you!"
+									class="contact-info-anchor d-flex text-contact"
+								>
+									<span class="me-3">Ask me via email</span>
+									<span>
+										<i
+											class="bi bi-envelope-paper mb-1"
+											style="height: 26"
+										></i>
+									</span>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -704,11 +543,6 @@
 			</footer>
 		</div>
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-			crossorigin="anonymous"
-		></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 		<script src="js/portfolio.js"></script>

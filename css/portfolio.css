@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 :root {
 	--primary-color: #1c3a41;
 	--light-primary-color: #26515a;
@@ -92,7 +93,7 @@ a {
 	background-color: black;
 	border: solid 5px white;
 	border-radius: 5px;
-	height: 390px;
+	/* height: 390px; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -131,10 +132,33 @@ a {
 	background: white;
 }
 
+.project-item {
+	background-color: black;
+	color: white;
+	transition: all 0.3s ease;
+	border-top: 3px solid white !important;
+	border-left: 3px solid white !important;
+	border-right: 3px solid white !important;
+	border-bottom: none;
+}
+
+.project-item:last-child {
+	border: 3px solid white !important;
+}
+
+.project-item:hover {
+	background-color: white;
+	color: black;
+}
+
+.project-item:hover a .logo-white {
+	filter: invert(1);
+}
+
 .contact-info {
 	background: black;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 15px;
 	color: white;
 	border: solid 5px black;
 	cursor: default;
@@ -153,6 +177,32 @@ a {
 
 .contact-info-anchor:hover {
 	color: #0095ff;
+}
+
+.project-image {
+	height: 100%;
+}
+
+.skill-image {
+	width: 40px;
+	height: 40px;
+	margin-right: 0.7rem !important;
+}
+
+.skill-item {
+	background-color: black;
+	color: white;
+	transition: all 0.2s ease;
+	border-bottom: 1px solid white;
+	display: flex;
+	align-items: center;
+	font-size: 1.25rem !important;
+	cursor: default;
+}
+
+.skill-item:hover {
+	background-color: white;
+	color: black;
 }
 
 .button-clipboard-copy {
@@ -199,6 +249,10 @@ a {
 	background: black;
 	background-size: cover;
 	inset: 5px;
+}
+
+.avatar-box::after {
+	background-image: url(../img/portfolio/avatar.webp);
 }
 
 @keyframes rotate {
@@ -261,4 +315,28 @@ a {
 
 #flexbox-console-container {
 	height: 400px;
+}
+
+.text-contact {
+	font-size: 1.25rem !important;
+}
+
+@media (max-width: 465px) {
+	#flexbox-console-container {
+		height: 450px;
+	}
+
+	.project-image {
+		height: 60px;
+	}
+
+	.contact-info {
+		padding: 5px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.text-contact {
+		font-size: 1rem !important;
+	}
 }

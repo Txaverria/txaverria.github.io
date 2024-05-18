@@ -1,3 +1,11 @@
+const container = document.getElementById('container-console');
+const closeButton = document.getElementById('closeButton');
+const maximizeButton = document.getElementById('maximizeButton');
+const hideButton = document.getElementById('hideButton');
+const taskbarStart = document.getElementById('taskbarStart');
+const taskbarItem = document.getElementById('taskbarItem');
+const taskbarItemImg = taskbarItem.querySelector('img');
+
 function copyText(text) {
 	var textArea = document.createElement('textarea');
 	textArea.value = text;
@@ -17,14 +25,6 @@ function copyText(text) {
 		timerProgressBar: true,
 	});
 }
-
-const container = document.getElementById('container-console');
-const closeButton = document.getElementById('closeButton');
-const maximizeButton = document.getElementById('maximizeButton');
-const hideButton = document.getElementById('hideButton');
-const taskbarStart = document.getElementById('taskbarStart');
-const taskbarItem = document.getElementById('taskbarItem');
-const taskbarItemImg = taskbarItem.querySelector('img');
 
 let maximizeImageIndex = 1;
 

@@ -192,7 +192,6 @@ a {
 .skill-item {
 	background-color: black;
 	color: white;
-	transition: all 0.2s ease;
 	border-bottom: 1px solid white;
 	display: flex;
 	align-items: center;
@@ -214,6 +213,14 @@ a {
 }
 
 .button-clipboard-copy:hover {
+	color: #0095ff;
+}
+
+.link {
+	/* transition: color 0.2s ease; */
+}
+
+.link:hover {
 	color: #0095ff;
 }
 

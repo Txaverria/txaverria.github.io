@@ -43,12 +43,12 @@ maximizeButton.addEventListener('click', () => {
 
 	if (maximizeImageIndex === 1) {
 		maximizeButton.src =
-			'https://img.icons8.com/windows/64/minimize-window.png';
+			'img/portfolio/terminal/minimize-window.webp';
 		console.log(maximizeImageIndex);
 		maximizeImageIndex = 2;
 	} else {
 		maximizeButton.src =
-			'https://img.icons8.com/windows/64/maximize-button.png';
+			'img/portfolio/terminal/maximize-button.webp';
 		console.log(maximizeImageIndex);
 		maximizeImageIndex = 1;
 	}
@@ -63,7 +63,7 @@ function hideWindow() {
 	taskbarItem.style.color = 'black';
 	taskbarItem.style.background = 'rgb(222, 226, 230)';
 	taskbarItemImg.style.filter = 'invert(0)';
-	taskbarItemImg.src = 'https://img.icons8.com/windows/64/sort-up.png';
+	taskbarItemImg.src = 'img/portfolio/terminal/sort-up.webp';
 	taskbarItem.style.cursor = 'pointer';
 
 	// Disable the second event listener
@@ -77,7 +77,7 @@ function showWindow() {
 	container.style.transform = `translateY(${currentPosition}px)`;
 	taskbarItem.style.background = 'none';
 	container.classList.remove('opacity-0');
-	taskbarItemImg.src = 'https://img.icons8.com/windows/64/sort-down.png';
+	taskbarItemImg.src = 'img/portfolio/terminal/sort-down.webp';
 	taskbarItem.style.cursor = 'default';
 
 	// Disable the second event listener

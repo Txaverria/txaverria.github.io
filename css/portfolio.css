@@ -124,10 +124,10 @@ a {
 	font-size: 25px;
 	border-radius: 5px;
 	transition: all 0.2s ease;
+	/* width: 40%; */
 }
 
 .custom-btn:hover {
-	padding: 20px 20px;
 	color: black;
 	background: white;
 }

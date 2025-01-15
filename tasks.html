@@ -33,7 +33,6 @@
       .task {
         display: flex;
         align-items: flex-start; /* Align items at the top */
-        margin-bottom: 5px;
         font-size: 1.5rem;
         position: relative;
         text-transform: lowercase;
@@ -113,6 +112,20 @@
         border-radius: 3px;
         padding-left: 5px;
         padding-right: 5px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+        body {
+          margin-left: 15%;
+          margin-right: 15%;
+        }
+      }
+
+      @media (max-width: 767px) {
+        body {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
       }
     </style>
   </head>

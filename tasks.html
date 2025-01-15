@@ -19,28 +19,48 @@
         background-color: #1e1e2e;
         color: #c6d0f5;
         font-family: "Arimo", sans-serif;
-        margin-left: 30%;
-        margin-right: 30%;
+        margin: 20px;
       }
       h1 {
         margin: 20px 0;
       }
 
       .tasks-container {
-        font-size: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .task-column {
+        flex: 1;
+        padding: 20px;
+        height: 100%;
+      }
+
+      #weekly-tasks-container, #daily-tasks-container {
+        margin-bottom: 10px;
+      }
+
+      .task-column:last-child {
+        flex: 0.5;
+      }
+
+      .task-column h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
       }
 
       .task {
         display: flex;
-        align-items: flex-start; /* Align items at the top */
+        align-items: flex-start;
         font-size: 1.5rem;
         position: relative;
         text-transform: lowercase;
-        gap: 10px; /* Space between checkbox, text, and icon */
+        gap: 10px;
       }
 
       .task input[type="checkbox"] {
-        margin-top: 12px; /* Align checkbox to the top of the text */
+        margin-top: 12px;
       }
 
       .task.completed {
@@ -58,22 +78,22 @@
       }
 
       .task-span {
-        flex-grow: 1; /* Allow the text to wrap within the available space */
-        word-wrap: break-word; /* Wrap long words to the next line if needed */
-        overflow-wrap: break-word; /* Ensure wrapping for compatibility */
+        flex-grow: 1;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
 
       .trash-icon {
         cursor: pointer;
-        margin-top: 4px; /* Align trash icon to the top of the text */
+        margin-top: 4px;
         color: #c6d0f5;
-        visibility: hidden; /* Initially hidden */
-        opacity: 0; /* Fully transparent */
+        visibility: hidden;
+        opacity: 0;
       }
 
       .task:hover .trash-icon {
-        visibility: visible; /* Visible when task is hovered */
-        opacity: 1; /* Fully opaque */
+        visibility: visible;
+        opacity: 1;
       }
 
       .trash-icon:hover {
@@ -104,59 +124,64 @@
         width: 100%;
         border: 0px solid #c6d0f5;
         text-transform: lowercase;
-        resize: none; /* Prevent manual resizing by the user */
-        overflow: hidden; /* Prevent scrollbars inside the textarea */
+        resize: none;
+        overflow: hidden;
         font-family: inherit;
         outline: none;
         padding: 0;
       }
 
-      @media (min-width: 768px) and (max-width: 1024px) {
-        body {
-          margin-left: 15%;
-          margin-right: 15%;
-        }
-      }
-
-      @media (max-width: 767px) {
-        body {
-          margin-left: 5%;
-          margin-right: 5%;
+      @media (max-width: 768px) {
+        .tasks-container {
+          flex-direction: column;
         }
       }
     </style>
   </head>
   <body>
-    <h1 class="fw-bold">TASKS FOR TODAY</h1>
+    <h1 class="fw-bold">TASKS</h1>
 
-    <div id="tasks-container"></div>
+    <div class="tasks-container">
+      <div class="task-column">
+        <h2>WEEKLY</h2>
+        <div id="weekly-tasks-container"></div>
+        <input id="weekly-editable-task" class="task-input" type="text" placeholder="+ Type your weekly task and press Enter" />
+      </div>
 
-    <input id="editable-task" type="text" placeholder="+ Type your task and press Enter" />
+      <div class="task-column">
+        <h2>DAILY</h2>
+        <div id="daily-tasks-container"></div>
+        <input id="daily-editable-task" class="task-input" type="text" placeholder="+ Type your daily task and press Enter" />
+      </div>
+    </div>
+
     <script>
-      const tasksContainer = document.getElementById("tasks-container");
-      const editableTask = document.getElementById("editable-task");
+      const weeklyTasksContainer = document.getElementById("weekly-tasks-container");
+      const weeklyEditableTask = document.getElementById("weekly-editable-task");
+      const dailyTasksContainer = document.getElementById("daily-tasks-container");
+      const dailyEditableTask = document.getElementById("daily-editable-task");
 
       // Load tasks from localStorage
-      function loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      function loadTasks(container, key) {
+        const tasks = JSON.parse(localStorage.getItem(key)) || [];
         tasks.forEach((task) => {
-          createTaskElement(task.text, task.completed);
+          createTaskElement(container, task.text, task.completed);
         });
       }
 
       // Save tasks to localStorage
-      function saveTasks() {
+      function saveTasks(container, key) {
         const tasks = [];
-        document.querySelectorAll(".task").forEach((taskDiv) => {
+        container.querySelectorAll(".task").forEach((taskDiv) => {
           const text = taskDiv.querySelector("span").textContent;
           const completed = taskDiv.querySelector("input[type='checkbox']").checked;
           tasks.push({ text, completed });
         });
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        localStorage.setItem(key, JSON.stringify(tasks));
       }
 
       // Create task element
-      function createTaskElement(taskText, isCompleted = false) {
+      function createTaskElement(container, taskText, isCompleted = false) {
         const taskDiv = document.createElement("div");
         taskDiv.className = "task";
         if (isCompleted) {
@@ -168,7 +193,7 @@
         checkbox.checked = isCompleted;
         checkbox.addEventListener("change", () => {
           taskDiv.classList.toggle("completed", checkbox.checked);
-          saveTasks();
+          saveTasks(container, container.id);
         });
 
         const taskLabel = document.createElement("span");
@@ -176,18 +201,12 @@
         taskLabel.className = "task-span";
         taskLabel.addEventListener("click", () => {
           const inputField = document.createElement("textarea");
-          inputField.value = taskLabel.textContent;
-          inputField.className = "task-input";
-          inputField.rows = "0";
+          inputField.rows = "1";
           var newHeight = taskLabel.scrollHeight;
+          inputField.value = taskLabel.textContent;
           inputField.style.height = `${newHeight}px`;
+          inputField.className = "task-input";
           taskDiv.replaceChild(inputField, taskLabel);
-
-          // Resize input dynamically as the user types
-          inputField.addEventListener("input", () => {
-            inputField.style.height = "auto"; // Reset height to calculate new height
-            inputField.style.height = `${newHeight}px`;
-          });
 
           inputField.focus();
           inputField.addEventListener("blur", () => {
@@ -196,9 +215,9 @@
               taskLabel.textContent = newText;
               taskDiv.replaceChild(taskLabel, inputField);
             } else {
-              tasksContainer.removeChild(taskDiv);
+              container.removeChild(taskDiv);
             }
-            saveTasks();
+            saveTasks(container, container.id);
           });
 
           inputField.addEventListener("keydown", (event) => {
@@ -212,29 +231,59 @@
         trashIcon.innerHTML = "<i class='bi bi-x-lg'></i>";
         trashIcon.className = "trash-icon";
         trashIcon.addEventListener("click", () => {
-          tasksContainer.removeChild(taskDiv);
-          saveTasks();
+          container.removeChild(taskDiv);
+          saveTasks(container, container.id);
         });
 
         taskDiv.appendChild(checkbox);
         taskDiv.appendChild(taskLabel);
         taskDiv.appendChild(trashIcon);
-        tasksContainer.appendChild(taskDiv);
+        container.appendChild(taskDiv);
 
-        saveTasks();
+        saveTasks(container, container.id);
       }
 
-      editableTask.addEventListener("keydown", (event) => {
+      weeklyEditableTask.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-          const taskText = editableTask.value.trim();
+          const taskText = weeklyEditableTask.value.trim();
           if (taskText) {
-            createTaskElement(taskText);
-            editableTask.value = ""; // Clear input field
+            createTaskElement(weeklyTasksContainer, taskText);
+            weeklyEditableTask.value = "";
           }
         }
       });
 
-      loadTasks();
+      dailyEditableTask.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          const taskText = dailyEditableTask.value.trim();
+          if (taskText) {
+            createTaskElement(dailyTasksContainer, taskText);
+            dailyEditableTask.value = "";
+          }
+        }
+      });
+
+      // Reset daily tasks to not completed at midnight
+      function resetDailyTasks() {
+        const tasks = JSON.parse(localStorage.getItem("daily-tasks-container")) || [];
+        tasks.forEach((task) => (task.completed = false));
+        localStorage.setItem("daily-tasks-container", JSON.stringify(tasks));
+        dailyTasksContainer.querySelectorAll(".task").forEach((taskDiv) => {
+          const checkbox = taskDiv.querySelector("input[type='checkbox']");
+          checkbox.checked = false;
+          taskDiv.classList.remove("completed");
+        });
+      }
+
+      setInterval(() => {
+        const now = new Date();
+        if (now.getHours() === 0 && now.getMinutes() === 0) {
+          resetDailyTasks();
+        }
+      }, 60000); // Check every minute
+
+      loadTasks(weeklyTasksContainer, "weekly-tasks-container");
+      loadTasks(dailyTasksContainer, "daily-tasks-container");
     </script>
   </body>
 </html>

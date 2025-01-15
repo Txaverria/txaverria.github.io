@@ -32,16 +32,18 @@
 
       .task {
         display: flex;
-        align-items: center;
-        margin-bottom: px;
+        align-items: flex-start; /* Align items at the top */
+        margin-bottom: 5px;
         font-size: 1.5rem;
-        position: relative; /* Ensure the trash icon is positioned relative to the task */
+        position: relative;
         text-transform: lowercase;
+        gap: 10px; /* Space between checkbox, text, and icon */
       }
 
       .task input[type="checkbox"] {
-        margin-right: 10px;
+        margin-top: 12px; /* Align checkbox to the top of the text */
       }
+
       .task.completed {
         color: #f7e4f7;
         text-decoration: line-through;
@@ -55,9 +57,16 @@
         background-color: #f7e4f7;
         color: #44475a;
       }
+
+      .task-span {
+        flex-grow: 1; /* Allow the text to wrap within the available space */
+        word-wrap: break-word; /* Wrap long words to the next line if needed */
+        overflow-wrap: break-word; /* Ensure wrapping for compatibility */
+      }
+
       .trash-icon {
         cursor: pointer;
-        margin-left: auto;
+        margin-top: 4px; /* Align trash icon to the top of the text */
         color: #c6d0f5;
         visibility: hidden; /* Initially hidden */
         opacity: 0; /* Fully transparent */
@@ -90,9 +99,20 @@
         color: #f7e4f7;
       }
 
-      input[type="checkbox"] {
-        width: 0.7em;
-        height: 0.7em;
+      .task-input {
+        background-color: #1e1e2e;
+        color: #c6d0f5;
+        width: 100%;
+        border: 2px solid #c6d0f5;
+        text-transform: lowercase;
+        resize: none; /* Prevent manual resizing by the user */
+        overflow: hidden; /* Prevent scrollbars inside the textarea */
+        font-family: inherit;
+        font-size: inherit;
+        outline: none;
+        border-radius: 3px;
+        padding-left: 5px;
+        padding-right: 5px;
       }
     </style>
   </head>
@@ -102,7 +122,6 @@
     <div id="tasks-container"></div>
 
     <input id="editable-task" type="text" placeholder="+ Type your task and press Enter" />
-
     <script>
       const tasksContainer = document.getElementById("tasks-container");
       const editableTask = document.getElementById("editable-task");
@@ -144,7 +163,40 @@
 
         const taskLabel = document.createElement("span");
         taskLabel.textContent = taskText;
-        taskLabel.style.marginRight = "10px";
+        taskLabel.className = "task-span";
+        taskLabel.addEventListener("click", () => {
+          const inputField = document.createElement("textarea");
+          inputField.value = taskLabel.textContent;
+          inputField.className = "task-input";
+          inputField.rows = "1";
+          var newHeight = taskLabel.scrollHeight + 7;
+          inputField.style.height = `${newHeight}px`;
+          taskDiv.replaceChild(inputField, taskLabel);
+
+          // Resize input dynamically as the user types
+          inputField.addEventListener("input", () => {
+            inputField.style.height = "auto"; // Reset height to calculate new height
+            inputField.style.height = `${newHeight}px`;
+          });
+
+          inputField.focus();
+          inputField.addEventListener("blur", () => {
+            const newText = inputField.value.trim();
+            if (newText) {
+              taskLabel.textContent = newText;
+              taskDiv.replaceChild(taskLabel, inputField);
+            } else {
+              tasksContainer.removeChild(taskDiv);
+            }
+            saveTasks();
+          });
+
+          inputField.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              inputField.blur();
+            }
+          });
+        });
 
         const trashIcon = document.createElement("span");
         trashIcon.innerHTML = "<i class='bi bi-x-lg'></i>";
@@ -162,7 +214,6 @@
         saveTasks();
       }
 
-      // Handle task addition
       editableTask.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           const taskText = editableTask.value.trim();
@@ -173,7 +224,6 @@
         }
       });
 
-      // Initialize tasks on page load
       loadTasks();
     </script>
   </body>

@@ -18,13 +18,16 @@
         margin: 20px;
       }
       h1 {
-        margin: 20px 0;
+        /* margin: 20px 0; */
+        text-align: center;
+        font-size: 1rem;
       }
       .tasks-container {
         display: flex;
         justify-content: space-between;
-        gap: 20px;
+        gap: 3rem;
         flex-wrap: wrap;
+        margin: 0 2rem;
       }
       .task-column {
         flex: 0.6;
@@ -44,7 +47,9 @@
         margin-bottom: 5px;
       }
       .task input[type="checkbox"] {
-        margin-top: 6px;
+        margin-top: 0.35rem;
+        width: 1rem;
+        height: 1rem;
       }
 
       .task input[type="checkbox"]:checked {
@@ -104,7 +109,11 @@
 
       .task-input#daily-task-input,
       .task-input#weekly-task-input {
-        color: #6c7086 !important;
+        color: #7f849c !important;
+      }
+
+      ::placeholder {
+        color: #585b70 !important;
       }
 
       @media (max-width: 768px) {
@@ -151,12 +160,12 @@
         taskDiv.className = `task ${completed ? "completed" : ""}`;
 
         taskDiv.innerHTML = `
-          <input type="checkbox" ${completed ? "checked" : ""}>
-          <textarea class="task-input" rows="1">${text}</textarea>
-          <span class="trash-icon">
-            <i class="bi bi-x-lg"></i>
-          </span>
-        `;
+        <input type="checkbox" ${completed ? "checked" : ""}>
+        <textarea class="task-input" rows="1">${text}</textarea>
+        <span class="trash-icon">
+          <i class="bi bi-x-lg"></i>
+        </span>
+      `;
 
         const taskInput = taskDiv.querySelector(".task-input");
 
@@ -185,6 +194,14 @@
         taskDiv.querySelector(".trash-icon").addEventListener("click", () => {
           taskDiv.remove();
           saveTasks(container, container.id);
+        });
+
+        // Close the textarea when "Enter" is pressed (without creating a new line)
+        taskInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault(); // Prevent a new line from being added
+            taskInput.blur(); // Trigger blur to save the task and close the textarea
+          }
         });
 
         // Append the task to the container

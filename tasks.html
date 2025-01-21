@@ -127,7 +127,7 @@
     <h1>TASKS</h1>
     <div class="tasks-container">
       <div class="task-column">
-        <h2>WEEKLY</h2>
+        <h2>GENERAL</h2>
         <div id="weekly-tasks-container"></div>
         <input id="weekly-task-input" class="task-input" type="text" placeholder="+ Type weekly task and press Enter" />
       </div>
@@ -142,30 +142,57 @@
       const weeklyTasksContainer = document.getElementById("weekly-tasks-container");
       const dailyTasksContainer = document.getElementById("daily-tasks-container");
 
-      function loadTasks(container, key) {
-        const tasks = JSON.parse(localStorage.getItem(key)) || [];
-        tasks.forEach(({ text, completed }) => createTaskElement(container, text, completed));
+      // Utility to get today's date in YYYY-MM-DD format
+      function getTodayDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+        const day = String(today.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
       }
 
+      // Load tasks and handle resetting daily tasks if their completion date is stale
+      function loadTasks(container, key, isDaily = false) {
+        const tasks = JSON.parse(localStorage.getItem(key)) || [];
+        const today = getTodayDate();
+
+        tasks.forEach(({ text, completed, completionDate }) => {
+          // Reset daily tasks if their completion date is not today
+          if (isDaily && completed && completionDate && completionDate !== today) {
+            completed = false; // Uncheck the task
+            completionDate = null; // Remove the completion date
+          }
+          createTaskElement(container, text, completed, isDaily, completionDate);
+        });
+
+        // Save updated tasks if daily tasks were reset
+        if (isDaily) saveTasks(container, key);
+      }
+
+      // Save tasks to localStorage, including completion dates for daily tasks
       function saveTasks(container, key) {
         const tasks = [...container.querySelectorAll(".task")].map((taskDiv) => ({
           text: taskDiv.querySelector("textarea").value,
           completed: taskDiv.querySelector("input[type='checkbox']").checked,
+          // Save completion date for daily tasks
+          completionDate: taskDiv.dataset.completionDate || null,
         }));
         localStorage.setItem(key, JSON.stringify(tasks));
       }
 
-      function createTaskElement(container, text, completed = false) {
+      // Create a task element and optionally handle daily task-specific logic
+      function createTaskElement(container, text, completed = false, isDaily = false, completionDate = null) {
         const taskDiv = document.createElement("div");
         taskDiv.className = `task ${completed ? "completed" : ""}`;
+        if (completionDate) taskDiv.dataset.completionDate = completionDate;
 
         taskDiv.innerHTML = `
-        <input type="checkbox" ${completed ? "checked" : ""}>
-        <textarea class="task-input" rows="1">${text}</textarea>
-        <span class="trash-icon">
-          <i class="bi bi-x-lg"></i>
-        </span>
-      `;
+          <input type="checkbox" ${completed ? "checked" : ""}>
+          <textarea class="task-input" rows="1">${text}</textarea>
+          <span class="trash-icon">
+            <i class="bi bi-x-lg"></i>
+          </span>
+        `;
 
         const taskInput = taskDiv.querySelector(".task-input");
 
@@ -193,8 +220,16 @@
         taskInput.addEventListener("blur", () => saveTasks(container, container.id));
 
         // Toggle completed class on checkbox change
-        taskDiv.querySelector("input").addEventListener("change", () => {
+        const checkbox = taskDiv.querySelector("input[type='checkbox']");
+        checkbox.addEventListener("change", () => {
           taskDiv.classList.toggle("completed");
+          if (checkbox.checked && isDaily) {
+            // Set completion date when task is completed
+            taskDiv.dataset.completionDate = getTodayDate();
+          } else if (isDaily) {
+            // Remove completion date when task is unchecked
+            taskDiv.dataset.completionDate = null;
+          }
           saveTasks(container, container.id);
         });
 
@@ -222,18 +257,20 @@
         window.addEventListener("resize", adjustHeight);
       }
 
-      function handleInput(event, container) {
+      function handleInput(event, container, isDaily = false) {
         if (event.key === "Enter" && event.target.value.trim()) {
-          createTaskElement(container, event.target.value.trim());
+          createTaskElement(container, event.target.value.trim(), false, isDaily);
           event.target.value = "";
         }
       }
 
+      // Event listeners for task inputs
       document.getElementById("weekly-task-input").addEventListener("keydown", (e) => handleInput(e, weeklyTasksContainer));
-      document.getElementById("daily-task-input").addEventListener("keydown", (e) => handleInput(e, dailyTasksContainer));
+      document.getElementById("daily-task-input").addEventListener("keydown", (e) => handleInput(e, dailyTasksContainer, true));
 
+      // Load tasks on page load
       loadTasks(weeklyTasksContainer, "weekly-tasks-container");
-      loadTasks(dailyTasksContainer, "daily-tasks-container");
+      loadTasks(dailyTasksContainer, "daily-tasks-container", true);
     </script>
   </body>
 </html>

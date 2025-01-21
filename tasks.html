@@ -179,7 +179,15 @@
         requestAnimationFrame(adjustHeight);
 
         // Add event listener to adjust height on input
-        taskInput.addEventListener("input", adjustHeight);
+        taskInput.addEventListener("input", () => {
+          adjustHeight();
+
+          // Remove the task if textarea becomes empty
+          if (taskInput.value.trim() === "") {
+            taskDiv.remove();
+            saveTasks(container, container.id);
+          }
+        });
 
         // Save tasks when the textarea loses focus
         taskInput.addEventListener("blur", () => saveTasks(container, container.id));

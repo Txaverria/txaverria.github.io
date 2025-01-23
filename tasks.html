@@ -10,121 +10,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <style>
-      body {
-        background-color: #1e1e2e;
-        color: #c6d0f5;
-        font-family: "Arimo", sans-serif;
-        margin: 20px;
-      }
-      h1 {
-        /* margin: 20px 0; */
-        text-align: center;
-        font-size: 1rem;
-      }
-      .tasks-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 3rem;
-        flex-wrap: wrap;
-        margin: 0 2rem;
-      }
-      .task-column {
-        flex: 0.6;
-      }
-      .task-column:last-child {
-        flex: 0.4;
-      }
-      .task-column h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-      }
-      .task {
-        display: flex;
-        align-items: flex-start;
-        font-size: 1.5rem;
-        gap: 10px;
-        margin-bottom: 5px;
-      }
-      .task input[type="checkbox"] {
-        margin-top: 0.35rem;
-        width: 1rem;
-        height: 1rem;
-      }
-
-      .task input[type="checkbox"]:checked {
-        accent-color: #a6e3a1 !important;
-      }
-
-      .task.completed textarea {
-        color: #a6e3a1;
-        text-decoration: line-through;
-      }
-
-      textarea {
-        background: none;
-        border: none;
-        width: 100%;
-        font-family: inherit;
-        color: #c6d0f5;
-        resize: none;
-      }
-      .trash-icon {
-        cursor: pointer;
-        visibility: hidden;
-      }
-      .task:hover .trash-icon {
-        visibility: visible;
-      }
-
-      .trash-icon:hover {
-        color: #c6d0f5;
-      }
-
-      .trash-icon:hover {
-        color: #f38ba8;
-      }
-
-      .task-input {
-        background: none;
-        width: 100%;
-        border: 0px solid #c6d0f5;
-        text-transform: lowercase;
-        resize: none;
-        overflow: hidden;
-        font-family: inherit;
-        outline: none;
-        padding: 0;
-        font-size: 1.5rem;
-      }
-
-      .task-input:focus {
-        color: #f7e4f7 !important;
-      }
-
-      #weekly-tasks-container,
-      #daily-tasks-container {
-        margin-bottom: 10px;
-      }
-
-      .task-input#daily-task-input,
-      .task-input#weekly-task-input {
-        color: #7f849c !important;
-      }
-
-      ::placeholder {
-        color: #585b70 !important;
-      }
-
-      @media (max-width: 768px) {
-        .tasks-container {
-          flex-direction: column;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/tasks.css" />
   </head>
   <body>
-    <h1>TASKS</h1>
     <div class="tasks-container">
       <div class="task-column">
         <h2>GENERAL</h2>
@@ -135,142 +23,25 @@
         <h2>DAILY</h2>
         <div id="daily-tasks-container"></div>
         <input id="daily-task-input" class="task-input" type="text" placeholder="+ Type daily task and press Enter" />
+        <!-- Calendar -->
+        <div id="calendar" class="calendar">
+          <div class="calendar-title">
+            <span id="calendar-month"></span>
+            <span id="calendar-year"></span>
+          </div>
+        </div>
+        <!-- Static Counter -->
+        <div id="dailies-counter" class="dailies-counter">
+          <span id="counter-value">0</span> <span class="counter-normal-text">days with all dailies completed.</span>
+        </div>
       </div>
     </div>
 
-    <script>
-      const weeklyTasksContainer = document.getElementById("weekly-tasks-container");
-      const dailyTasksContainer = document.getElementById("daily-tasks-container");
+    <!-- Message -->
+    <div class="message-container">
+      <div id="message" class="message"></div>
+    </div>
 
-      // Utility to get today's date in YYYY-MM-DD format
-      function getTodayDate() {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
-        const day = String(today.getDate()).padStart(2, "0");
-        return `${year}-${month}-${day}`;
-      }
-
-      // Load tasks and handle resetting daily tasks if their completion date is stale
-      function loadTasks(container, key, isDaily = false) {
-        const tasks = JSON.parse(localStorage.getItem(key)) || [];
-        const today = getTodayDate();
-
-        tasks.forEach(({ text, completed, completionDate }) => {
-          // Reset daily tasks if their completion date is not today
-          if (isDaily && completed && completionDate && completionDate !== today) {
-            completed = false; // Uncheck the task
-            completionDate = null; // Remove the completion date
-          }
-          createTaskElement(container, text, completed, isDaily, completionDate);
-        });
-
-        // Save updated tasks if daily tasks were reset
-        if (isDaily) saveTasks(container, key);
-      }
-
-      // Save tasks to localStorage, including completion dates for daily tasks
-      function saveTasks(container, key) {
-        const tasks = [...container.querySelectorAll(".task")].map((taskDiv) => ({
-          text: taskDiv.querySelector("textarea").value,
-          completed: taskDiv.querySelector("input[type='checkbox']").checked,
-          // Save completion date for daily tasks
-          completionDate: taskDiv.dataset.completionDate || null,
-        }));
-        localStorage.setItem(key, JSON.stringify(tasks));
-      }
-
-      // Create a task element and optionally handle daily task-specific logic
-      function createTaskElement(container, text, completed = false, isDaily = false, completionDate = null) {
-        const taskDiv = document.createElement("div");
-        taskDiv.className = `task ${completed ? "completed" : ""}`;
-        if (completionDate) taskDiv.dataset.completionDate = completionDate;
-
-        taskDiv.innerHTML = `
-          <input type="checkbox" ${completed ? "checked" : ""}>
-          <textarea class="task-input" rows="1">${text}</textarea>
-          <span class="trash-icon">
-            <i class="bi bi-x-lg"></i>
-          </span>
-        `;
-
-        const taskInput = taskDiv.querySelector(".task-input");
-
-        // Function to dynamically adjust height based on zoom level
-        const adjustHeight = () => {
-          taskInput.style.height = "auto"; // Reset height
-          taskInput.style.height = `${taskInput.scrollHeight}px`; // Adjust height
-        };
-
-        // Adjust height immediately after appending to the DOM
-        requestAnimationFrame(adjustHeight);
-
-        // Add event listener to adjust height on input
-        taskInput.addEventListener("input", () => {
-          adjustHeight();
-
-          // Remove the task if textarea becomes empty
-          if (taskInput.value.trim() === "") {
-            taskDiv.remove();
-            saveTasks(container, container.id);
-          }
-        });
-
-        // Save tasks when the textarea loses focus
-        taskInput.addEventListener("blur", () => saveTasks(container, container.id));
-
-        // Toggle completed class on checkbox change
-        const checkbox = taskDiv.querySelector("input[type='checkbox']");
-        checkbox.addEventListener("change", () => {
-          taskDiv.classList.toggle("completed");
-          if (checkbox.checked && isDaily) {
-            // Set completion date when task is completed
-            taskDiv.dataset.completionDate = getTodayDate();
-          } else if (isDaily) {
-            // Remove completion date when task is unchecked
-            taskDiv.dataset.completionDate = null;
-          }
-          saveTasks(container, container.id);
-        });
-
-        // Remove task on clicking trash icon
-        taskDiv.querySelector(".trash-icon").addEventListener("click", () => {
-          taskDiv.remove();
-          saveTasks(container, container.id);
-        });
-
-        // Close the textarea when "Enter" is pressed (without creating a new line)
-        taskInput.addEventListener("keydown", (event) => {
-          if (event.key === "Enter") {
-            event.preventDefault(); // Prevent a new line from being added
-            taskInput.blur(); // Trigger blur to save the task and close the textarea
-          }
-        });
-
-        // Append the task to the container
-        container.appendChild(taskDiv);
-
-        // Ensure all tasks are saved to localStorage
-        saveTasks(container, container.id);
-
-        // Recalculate height on window resize (zoom changes trigger this)
-        window.addEventListener("resize", adjustHeight);
-      }
-
-      function handleInput(event, container, isDaily = false) {
-        if (event.key === "Enter" && event.target.value.trim()) {
-          createTaskElement(container, event.target.value.trim(), false, isDaily);
-          event.target.value = "";
-        }
-      }
-
-      // Event listeners for task inputs
-      document.getElementById("weekly-task-input").addEventListener("keydown", (e) => handleInput(e, weeklyTasksContainer));
-      document.getElementById("daily-task-input").addEventListener("keydown", (e) => handleInput(e, dailyTasksContainer, true));
-
-      // Load tasks on page load
-      loadTasks(weeklyTasksContainer, "weekly-tasks-container");
-      loadTasks(dailyTasksContainer, "daily-tasks-container", true);
-    </script>
+    <script src="js/tasks.js"></script>
   </body>
 </html>

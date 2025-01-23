@@ -1,0 +1,249 @@
+body {
+  background-color: #1e1e2e; /* Base */
+  color: #c6d0f5; /* Text */
+  font-family: "Arimo", sans-serif;
+  margin: 20px;
+}
+
+.tasks-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin: 0 2rem;
+}
+
+.task-column {
+  flex: 0.6;
+}
+
+.task-column:last-child {
+  flex: 0.4;
+}
+
+.task-column h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #cdd6f4; /* Text */
+}
+
+.task {
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.5rem;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.task input[type="checkbox"] {
+  margin-top: 0.35rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.task input[type="checkbox"]:checked {
+  accent-color: #a6e3a1; /* Green */
+}
+
+.task.completed textarea {
+  color: #a6e3a1; /* Green */
+  text-decoration: line-through;
+}
+
+textarea {
+  background: none;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  color: #cdd6f4; /* Text */
+  resize: none;
+}
+
+.trash-icon {
+  cursor: pointer;
+  visibility: hidden;
+  color: #cdd6f4; /* Red */
+}
+
+.task:hover .trash-icon {
+  visibility: visible;
+}
+
+.trash-icon:hover {
+  color: #f38ba8; /* Red */
+}
+
+.task-input {
+  background: none;
+  width: 100%;
+  border: 0px solid #cdd6f4; /* Text */
+  resize: none;
+  overflow: hidden;
+  font-family: inherit;
+  outline: none;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.task-input:focus {
+  color: #f7e4f7 !important; /* Rosewater */
+}
+
+#weekly-tasks-container,
+#daily-tasks-container {
+  margin-bottom: 10px;
+}
+
+.task-input#daily-task-input,
+.task-input#weekly-task-input {
+  color: #7f849c !important; /* Overlay 1 */
+}
+
+::placeholder {
+  color: #585b70 !important; /* Surface 2 */
+}
+
+@media (max-width: 768px) {
+  .tasks-container {
+    flex-direction: column;
+  }
+}
+
+/* Confetti Animation */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #f9e2af; /* Yellow */
+  animation: confetti-fall 3s linear;
+  z-index: 1000;
+}
+
+.confetti:nth-child(2n) {
+  background-color: #f5c2e7; /* Pink */
+}
+
+.confetti:nth-child(3n) {
+  background-color: #94e2d5; /* Teal */
+}
+
+.confetti:nth-child(4n) {
+  background-color: #89b4fa; /* Blue */
+}
+
+.confetti:nth-child(5n) {
+  background-color: #fab387; /* Peach */
+}
+
+/* Calendar Styles */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 25px;
+}
+
+.calendar-title {
+  grid-column: span 7;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  color: #cdd6f4; /* Text */
+}
+
+.calendar-month {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #585b70; /* Surface 2 */
+  border-radius: 5px;
+  background-color: #11111b; /* Crust */
+  color: #cdd6f4; /* Text */
+}
+
+.calendar-day.completed {
+  background-color: #a6e3a1; /* Green */
+  color: #1e1e2e; /* Base */
+}
+
+/* Message Styles */
+.message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #11111b; /* Crust */
+  color: #cba6f7; /* Mauve */
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: inline-block;
+}
+
+.message-title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.message-title {
+  margin-top: 0px;
+  font-size: 4rem;
+  color: #cdd6f4; /* Text */
+}
+
+.dailies-counter {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  color: #cdd6f4; /* Text */
+  text-align: center;
+}
+
+#counter-value {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #a6e3a1; /* Green */
+  line-height: 3rem;
+  margin-right: 5px;
+}
+
+.message-paragraph {
+  font-style: italic;
+  margin: 0px;
+  font-size: 1.25rem;
+  color: #cdd6f4; /* Text */
+}
+
+.message.visible {
+  opacity: 1;
+}
+
+.calendar-day-of-week {
+  text-align: center;
+  padding-bottom: 5px;
+  color: #cdd6f4; /* Text */
+}

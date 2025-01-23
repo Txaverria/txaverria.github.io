@@ -247,3 +247,49 @@ textarea {
   padding-bottom: 5px;
   color: #cdd6f4; /* Text */
 }
+
+/* Tooltip Styles */
+.dailies-counter {
+  position: relative; /* Required for tooltip positioning */
+  cursor: default;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #11111b; /* Crust */
+  color: #cdd6f4; /* Text */
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the dailies-counter */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06); /* Box shadow */
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Arrow pointing down */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #11111b transparent transparent transparent; /* Arrow color */
+}
+
+.dailies-counter:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dailies-counter:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}

@@ -46,7 +46,7 @@ body {
 }
 
 .task.completed textarea {
-  color: #a6e3a1; /* Green */
+  color: #a6e3a1 !important; /* Green */
   text-decoration: line-through;
 }
 

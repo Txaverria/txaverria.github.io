@@ -30,9 +30,17 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
   if (isDaily) {
     taskDiv.dataset.completionDate = completionDate; // Restore the completion date
   }
+
+  // Check if the task text contains [important], [importante], [imp], or the standalone word "imp"
+  const isImportant =
+    text.includes("[important]") ||
+    text.includes("[importante]") ||
+    text.includes("[imp]") ||
+    /\bimp\b/i.test(text);
+
   taskDiv.innerHTML = `
           <input type="checkbox" ${completed ? "checked" : ""}>
-          <textarea class="task-input" rows="1">${text}</textarea>
+          <textarea class="task-input" rows="1" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}">${text}</textarea>
           <span class="trash-icon"><i class="bi bi-x-lg"></i></span>
         `;
 

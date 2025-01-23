@@ -32,11 +32,7 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
   }
 
   // Check if the task text contains [important], [importante], [imp], or the standalone word "imp"
-  const isImportant =
-    text.includes("[important]") ||
-    text.includes("[importante]") ||
-    text.includes("[imp]") ||
-    /\bimp\b/i.test(text);
+  const isImportant = text.includes("[important]") || text.includes("[importante]") || text.includes("[imp]") || /\bimp\b/i.test(text);
 
   taskDiv.innerHTML = `
           <input type="checkbox" ${completed ? "checked" : ""}>
@@ -48,8 +44,12 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
   const checkbox = taskDiv.querySelector("input[type='checkbox']");
 
   // Adjust textarea height dynamically
-  const adjustHeight = () => {};
-  adjustHeight();
+  const adjustHeight = () => {
+    taskInput.style.height = "auto"; // Reset height
+    taskInput.style.height = `${taskInput.scrollHeight}px`; // Adjust height
+  };
+  requestAnimationFrame(adjustHeight);
+
   taskInput.addEventListener("input", adjustHeight);
 
   // Save tasks on blur
@@ -66,6 +66,7 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
       }
       checkDailyCompletion();
     }
+
     saveTasks(container);
   });
 
@@ -83,6 +84,8 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
       taskInput.blur();
     }
   });
+
+  window.addEventListener("resize", adjustHeight);
 
   container.appendChild(taskDiv);
   saveTasks(container);

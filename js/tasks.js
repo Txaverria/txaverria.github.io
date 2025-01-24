@@ -125,19 +125,26 @@ function updateCounter(counter) {
 }
 
 // Show congratulatory message
+// Update the showMessage function
 function showMessage(counter) {
-  message.innerHTML = `
-          <div class="message-title-container">
-            <span class="message-title">Congratulations!</span>
-          </div>
-          <p class="message-paragraph">
-            <strong>I'm so proud of you!</strong> <br />
-            Keep it up and don't be too hard on yourself if you don't achieve everything in a day.
-          </p>`;
-  message.classList.add("visible");
+  const messageContainer = document.querySelector('.message-container');
+  const message = document.getElementById('message');
 
+  message.innerHTML = `
+    <div class="message-title-container">
+      <span class="message-title">Congratulations!</span>
+    </div>
+    <p class="message-paragraph">
+      <strong>I'm so proud of you!</strong> <br />
+      Keep it up and don't be too hard on yourself if you don't achieve everything in a day.
+    </p>`;
+
+  // Show the message container
+  messageContainer.classList.add('visible');
+
+  // Hide the message after 7 seconds
   setTimeout(() => {
-    message.classList.remove("visible");
+    messageContainer.classList.remove('visible');
   }, 7000);
 }
 

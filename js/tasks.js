@@ -52,6 +52,8 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
 
   taskInput.addEventListener("input", adjustHeight);
 
+  window.addEventListener("resize", adjustHeight);
+
   // Save tasks on blur
   taskInput.addEventListener("blur", () => saveTasks(container));
 
@@ -127,8 +129,8 @@ function updateCounter(counter) {
 // Show congratulatory message
 // Update the showMessage function
 function showMessage(counter) {
-  const messageContainer = document.querySelector('.message-container');
-  const message = document.getElementById('message');
+  const messageContainer = document.querySelector(".message-container");
+  const message = document.getElementById("message");
 
   message.innerHTML = `
     <div class="message-title-container">
@@ -140,11 +142,11 @@ function showMessage(counter) {
     </p>`;
 
   // Show the message container
-  messageContainer.classList.add('visible');
+  messageContainer.classList.add("visible");
 
   // Hide the message after 7 seconds
   setTimeout(() => {
-    messageContainer.classList.remove('visible');
+    messageContainer.classList.remove("visible");
   }, 7000);
 }
 
@@ -294,20 +296,39 @@ function initializeCounter() {
 }
 
 // Event Listeners
-document.getElementById("weekly-task-input").addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && e.target.value.trim()) {
-    createTaskElement(weeklyTasksContainer, e.target.value.trim());
-    e.target.value = "";
-  }
-});
+// Function to adjust the height of a textarea
+const adjustTextareaHeight = (textarea) => {
+  textarea.style.height = "auto"; // Reset height
+  textarea.style.height = `${textarea.scrollHeight}px`; // Adjust height
+};
 
-document.getElementById("daily-task-input").addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && e.target.value.trim()) {
-    createTaskElement(dailyTasksContainer, e.target.value.trim(), false, true);
-    e.target.value = "";
-    resetCompletionForToday();
+// Function to handle the "Enter" key for task creation
+const handleEnterKey = (e, container, isDaily = false) => {
+  if (e.key === "Enter") {
+    if (e.target.value.trim() === "") {
+      e.preventDefault(); // Prevent newline if the textarea is empty
+    } else if (!e.shiftKey) {
+      e.preventDefault(); // Prevent newline if Shift is not pressed
+      createTaskElement(container, e.target.value.trim(), false, isDaily);
+      e.target.value = "";
+      if (isDaily) resetCompletionForToday();
+      adjustTextareaHeight(e.target); // Adjust height after clearing the textarea
+    }
+    // Allow newline if Shift + Enter is pressed and the textarea is not empty
   }
-});
+};
+
+// Add event listeners for the weekly task input
+const weeklyTaskInput = document.getElementById("weekly-task-input");
+weeklyTaskInput.addEventListener("keydown", (e) => handleEnterKey(e, weeklyTasksContainer));
+weeklyTaskInput.addEventListener("input", (e) => adjustTextareaHeight(e.target));
+window.addEventListener("resize", () => adjustTextareaHeight(weeklyTaskInput));
+
+// Add event listeners for the daily task input
+const dailyTaskInput = document.getElementById("daily-task-input");
+dailyTaskInput.addEventListener("keydown", (e) => handleEnterKey(e, dailyTasksContainer, true));
+dailyTaskInput.addEventListener("input", (e) => adjustTextareaHeight(e.target));
+window.addEventListener("resize", () => adjustTextareaHeight(dailyTaskInput));
 
 // Initialize
 loadTasks(weeklyTasksContainer);

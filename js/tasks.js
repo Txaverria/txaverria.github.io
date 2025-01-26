@@ -25,13 +25,55 @@ function getFromLocalStorage(key) {
 
 // Utility function to check if a task is important
 function checkIfImportant(text) {
-  return (
-    text.includes("[important]") ||
-    text.includes("[importante]") ||
-    text.includes("[imp]") ||
-    text.includes("*") ||
-    /\bimp\b/i.test(text)
-  );
+  return text.includes("[important]") || text.includes("[importante]") || text.includes("[imp]") || text.includes("*") || /\bimp\b/i.test(text);
+}
+
+function detectDates(text) {
+  // Regex to match dates in various formats
+  const dateRegex =
+  /(\d{1,2}(st|nd|rd|th)?\s*(of\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s*\d{4})|(\d{1,2}(st|nd|rd|th)?\s*(of\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|((January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s+the\s+\d{1,2}(st|nd|rd|th)?)|((January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s+\d{1,2}(st|nd|rd|th)?)|(el\s+\d{1,2}\s+(de\s+)?(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s*\d{4})|(el\s+\d{1,2}\s+(de\s+)?(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|(\d{1,2}\s+de\s+(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|(\d{1,2}[\/-]\d{1,2}[\/-]\d{4})/gi;
+
+  // Replace detected dates with highlighted spans
+  return text.replace(dateRegex, (match) => `<span style="color: #f9e2af;">${match}</span>`);
+}
+
+function saveCursorPosition(element) {
+  const selection = window.getSelection();
+  const range = selection.getRangeAt(0);
+  const preCaretRange = range.cloneRange();
+  preCaretRange.selectNodeContents(element);
+  preCaretRange.setEnd(range.endContainer, range.endOffset);
+  return preCaretRange.toString().length;
+}
+
+function restoreCursorPosition(element, position) {
+  const selection = window.getSelection();
+  const range = document.createRange();
+  range.setStart(element, 0);
+  range.collapse(true);
+
+  let currentPosition = 0;
+  let nodeStack = [element];
+  let node;
+
+  while ((node = nodeStack.pop())) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const nextPosition = currentPosition + node.length;
+      if (position <= nextPosition) {
+        range.setStart(node, position - currentPosition);
+        break;
+      }
+      currentPosition = nextPosition;
+    } else {
+      const children = node.childNodes;
+      for (let i = children.length - 1; i >= 0; i--) {
+        nodeStack.push(children[i]);
+      }
+    }
+  }
+
+  selection.removeAllRanges();
+  selection.addRange(range);
 }
 
 // Task Management
@@ -45,23 +87,43 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
   // Initial check for importance
   const isImportant = checkIfImportant(text);
 
+  // Highlight dates in the text
+  const textWithHighlightedDates = detectDates(text);
+
   taskDiv.innerHTML = `
     <input type="checkbox" ${completed ? "checked" : ""}>
-    <textarea class="task-input" rows="1" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}">${text}</textarea>
+    <div class="task-input" contenteditable="true" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}">${textWithHighlightedDates}</div>
     <span class="trash-icon"><i class="bi bi-x-lg"></i></span>
   `;
 
   const taskInput = taskDiv.querySelector(".task-input");
   const checkbox = taskDiv.querySelector("input[type='checkbox']");
 
-  // Adjust textarea height dynamically
+  // Adjust height dynamically
   const adjustHeight = () => {
     taskInput.style.height = "auto"; // Reset height
     taskInput.style.height = `${taskInput.scrollHeight}px`; // Adjust height
   };
   requestAnimationFrame(adjustHeight);
 
-  taskInput.addEventListener("input", adjustHeight);
+  taskInput.addEventListener("input", () => {
+    adjustHeight();
+
+    // Save the cursor position
+    const cursorPosition = saveCursorPosition(taskInput);
+
+    // Update importance and date highlighting
+    const isImportant = checkIfImportant(taskInput.textContent);
+    taskInput.style.color = isImportant ? "#f38ba8" : "#cdd6f4";
+
+    // Highlight dates dynamically
+    const textWithHighlightedDates = detectDates(taskInput.textContent);
+    taskInput.innerHTML = textWithHighlightedDates;
+
+    // Restore the cursor position
+    restoreCursorPosition(taskInput, cursorPosition);
+    saveTasks(container)
+  });
 
   window.addEventListener("resize", adjustHeight);
 
@@ -90,7 +152,7 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
     if (isDaily) checkDailyCompletion();
   });
 
-  // Prevent new lines in textarea
+  // Prevent new lines in contenteditable div
   taskInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -98,21 +160,13 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
     }
   });
 
-  // Update importance and text color on input change
-  taskInput.addEventListener("input", () => {
-    const isImportant = checkIfImportant(taskInput.value);
-    taskInput.style.color = isImportant ? "#f38ba8" : "#cdd6f4";
-  });
-
-  window.addEventListener("resize", adjustHeight);
-
   container.appendChild(taskDiv);
   saveTasks(container);
 }
 
 function saveTasks(container) {
   const tasks = [...container.querySelectorAll(".task")].map((taskDiv) => ({
-    text: taskDiv.querySelector("textarea").value,
+    text: taskDiv.querySelector(".task-input").textContent, // Use textContent instead of value
     completed: taskDiv.querySelector("input[type='checkbox']").checked,
     completionDate: taskDiv.dataset.completionDate || null,
   }));

@@ -37,7 +37,7 @@ body {
 }
 
 .task input[type="checkbox"] {
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
   width: 1rem;
   height: 1rem;
 }
@@ -46,7 +46,7 @@ body {
   accent-color: #a6e3a1; /* Green */
 }
 
-.task.completed textarea {
+.task.completed .task-input, .task.completed .task-input span {
   color: #a6e3a1 !important; /* Green */
   text-decoration: line-through;
 }
@@ -86,7 +86,7 @@ textarea {
   font-size: 1.5rem;
 }
 
-.task-input:focus {
+.task-input:focus, .task-input:focus span {
   color: #f7e4f7 !important; /* Rosewater */
 }
 

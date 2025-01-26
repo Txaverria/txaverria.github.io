@@ -32,7 +32,8 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
   }
 
   // Check if the task text contains [important], [importante], [imp], or the standalone word "imp"
-  const isImportant = text.includes("[important]") || text.includes("[importante]") || text.includes("[imp]") || /\bimp\b/i.test(text);
+  const isImportant =
+    text.includes("[important]") || text.includes("[importante]") || text.includes("[imp]") || text.includes("*") || /\bimp\b/i.test(text);
 
   taskDiv.innerHTML = `
           <input type="checkbox" ${completed ? "checked" : ""}>

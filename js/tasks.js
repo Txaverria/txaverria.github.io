@@ -284,6 +284,7 @@ function generateCalendar() {
   const lastDay = new Date(year, month + 1, 0);
   const daysInMonth = lastDay.getDate();
   const startingDay = firstDay.getDay();
+  const currentDay = today.getDate(); // Get the current day of the month
 
   calendarMonth.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(today);
   calendarYear.textContent = year;
@@ -316,6 +317,12 @@ function generateCalendar() {
     dayElement.className = "calendar-day";
     dayElement.textContent = day;
     dayElement.setAttribute("data-day", day);
+
+    // Highlight the current day
+    if (day === currentDay) {
+      dayElement.classList.add("current-day");
+    }
+
     calendar.appendChild(dayElement);
   }
 

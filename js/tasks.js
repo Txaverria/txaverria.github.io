@@ -23,6 +23,17 @@ function getFromLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key)) || [];
 }
 
+// Utility function to check if a task is important
+function checkIfImportant(text) {
+  return (
+    text.includes("[important]") ||
+    text.includes("[importante]") ||
+    text.includes("[imp]") ||
+    text.includes("*") ||
+    /\bimp\b/i.test(text)
+  );
+}
+
 // Task Management
 function createTaskElement(container, text, completed = false, isDaily = false, completionDate = null) {
   const taskDiv = document.createElement("div");
@@ -31,15 +42,14 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
     taskDiv.dataset.completionDate = completionDate; // Restore the completion date
   }
 
-  // Check if the task text contains [important], [importante], [imp], or the standalone word "imp"
-  const isImportant =
-    text.includes("[important]") || text.includes("[importante]") || text.includes("[imp]") || text.includes("*") || /\bimp\b/i.test(text);
+  // Initial check for importance
+  const isImportant = checkIfImportant(text);
 
   taskDiv.innerHTML = `
-          <input type="checkbox" ${completed ? "checked" : ""}>
-          <textarea class="task-input" rows="1" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}">${text}</textarea>
-          <span class="trash-icon"><i class="bi bi-x-lg"></i></span>
-        `;
+    <input type="checkbox" ${completed ? "checked" : ""}>
+    <textarea class="task-input" rows="1" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}">${text}</textarea>
+    <span class="trash-icon"><i class="bi bi-x-lg"></i></span>
+  `;
 
   const taskInput = taskDiv.querySelector(".task-input");
   const checkbox = taskDiv.querySelector("input[type='checkbox']");
@@ -88,6 +98,12 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
     }
   });
 
+  // Update importance and text color on input change
+  taskInput.addEventListener("input", () => {
+    const isImportant = checkIfImportant(taskInput.value);
+    taskInput.style.color = isImportant ? "#f38ba8" : "#cdd6f4";
+  });
+
   window.addEventListener("resize", adjustHeight);
 
   container.appendChild(taskDiv);
@@ -122,14 +138,18 @@ function updateCounter(counter) {
   const counterValue = document.getElementById("counter-value");
   const counterNormalText = document.querySelector(".counter-normal-text");
   counterValue.textContent = counter;
+
+  // Update the text based on the counter value
   if (counter === 1) {
     counterNormalText.textContent = "day with all dailies completed.";
+  } else {
+    counterNormalText.textContent = "days with all dailies completed.";
   }
 }
 
 // Show congratulatory message
 // Update the showMessage function
-function showMessage(counter) {
+function showMessage() {
   const messageContainer = document.querySelector(".message-container");
   const message = document.getElementById("message");
 
@@ -148,7 +168,7 @@ function showMessage(counter) {
   // Hide the message after 7 seconds
   setTimeout(() => {
     messageContainer.classList.remove("visible");
-  }, 7000);
+  }, 6000);
 }
 
 // Daily Completion Logic
@@ -177,7 +197,7 @@ function checkDailyCompletion() {
 
       // Trigger confetti and show message
       createConfetti();
-      showMessage(counter);
+      showMessage();
       markCalendarDay(new Date().getDate());
     } else if (!todayEntry.alreadyMarked) {
       // If today has been marked as completed before but not counted, update the flag
@@ -193,7 +213,7 @@ function checkDailyCompletion() {
 
       // Trigger confetti and show message
       createConfetti();
-      showMessage(counter);
+      showMessage();
       markCalendarDay(new Date().getDate());
     }
   } else {

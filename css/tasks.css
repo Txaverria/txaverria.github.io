@@ -33,7 +33,7 @@ body {
   align-items: flex-start;
   font-size: 1.5rem;
   gap: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .task input[type="checkbox"] {
@@ -46,7 +46,8 @@ body {
   accent-color: #a6e3a1; /* Green */
 }
 
-.task.completed .task-input, .task.completed .task-input span {
+.task.completed .task-input,
+.task.completed .task-input span {
   color: #a6e3a1 !important; /* Green */
   text-decoration: line-through;
 }
@@ -86,7 +87,8 @@ textarea {
   font-size: 1.5rem;
 }
 
-.task-input:focus, .task-input:focus span {
+.task-input:focus,
+.task-input:focus span {
   color: #f7e4f7 !important; /* Rosewater */
 }
 

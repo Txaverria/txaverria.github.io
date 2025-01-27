@@ -31,7 +31,7 @@ function checkIfImportant(text) {
 function detectDates(text) {
   // Regex to match dates in various formats
   const dateRegex =
-  /(\d{1,2}(st|nd|rd|th)?\s*(of\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s*\d{4})|(\d{1,2}(st|nd|rd|th)?\s*(of\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|((January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s+the\s+\d{1,2}(st|nd|rd|th)?)|((January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s+\d{1,2}(st|nd|rd|th)?)|(el\s+\d{1,2}\s+(de\s+)?(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s*\d{4})|(el\s+\d{1,2}\s+(de\s+)?(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|(\d{1,2}\s+de\s+(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|(\d{1,2}[\/-]\d{1,2}[\/-]\d{4})/gi;
+    /(\d{1,2}(st|nd|rd|th)?\s*(of\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s*\d{4})|(\d{1,2}(st|nd|rd|th)?\s*(of\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|((January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s+the\s+\d{1,2}(st|nd|rd|th)?)|((January|February|March|April|May|June|July|August|September|October|November|December|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s+\d{1,2}(st|nd|rd|th)?)|(el\s+\d{1,2}\s+(de\s+)?(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)\s*\d{4})|(el\s+\d{1,2}\s+(de\s+)?(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|(\d{1,2}\s+de\s+(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre))|(\d{1,2}[\/-]\d{1,2}[\/-]\d{4})/gi;
 
   // Replace detected dates with highlighted spans
   return text.replace(dateRegex, (match) => `<span style="color: #f9e2af;">${match}</span>`);
@@ -122,7 +122,7 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
 
     // Restore the cursor position
     restoreCursorPosition(taskInput, cursorPosition);
-    saveTasks(container)
+    saveTasks(container);
   });
 
   window.addEventListener("resize", adjustHeight);
@@ -171,6 +171,7 @@ function saveTasks(container) {
     completionDate: taskDiv.dataset.completionDate || null,
   }));
   saveToLocalStorage(container.id, tasks);
+  if (container.id === "daily-tasks-container") updateDailyStatus(); // Update the status message after saving tasks
 }
 
 function loadTasks(container, isDaily = false) {
@@ -185,6 +186,7 @@ function loadTasks(container, isDaily = false) {
     }
     createTaskElement(container, text, completed, isDaily, completionDate); // Pass the completionDate
   });
+  if (isDaily) updateDailyStatus(); // Update the status message after loading tasks
 }
 
 // Update the static counter
@@ -202,7 +204,6 @@ function updateCounter(counter) {
 }
 
 // Show congratulatory message
-// Update the showMessage function
 function showMessage() {
   const messageContainer = document.querySelector(".message-container");
   const message = document.getElementById("message");
@@ -273,6 +274,20 @@ function checkDailyCompletion() {
   } else {
     resetCompletionForToday();
   }
+  updateDailyStatus(); // Update the status message after checking completion
+}
+
+// Update the daily status message
+function updateDailyStatus() {
+  const tasks = dailyTasksContainer.querySelectorAll(".task");
+  const incompleteTasks = [...tasks].filter((task) => !task.querySelector("input[type='checkbox']").checked).length;
+
+  const dailyStatus = document.getElementById("daily-status");
+  if (incompleteTasks === 0) {
+    dailyStatus.textContent = "All done!";
+  } else {
+    dailyStatus.textContent = `${incompleteTasks} to go`;
+  }
 }
 
 // Calendar Functions
@@ -286,13 +301,33 @@ function generateCalendar() {
   const startingDay = firstDay.getDay();
   const currentDay = today.getDate(); // Get the current day of the month
 
-  calendarMonth.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(today);
+  // Helper function to get the ordinal suffix for the day
+  const getOrdinalSuffix = (day) => {
+    if (day > 3 && day < 21) return "th"; // Covers 11th, 12th, 13th, etc.
+    switch (day % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  };
+
+  // Format the month and day with the correct ordinal suffix
+  const ordinalSuffix = getOrdinalSuffix(currentDay);
+  const formattedDate = `${currentDay}${ordinalSuffix} of ${new Intl.DateTimeFormat("en-US", { month: "long" }).format(today)}`;
+
+  // Update the calendar title
+  calendarMonth.textContent = formattedDate;
   calendarYear.textContent = year;
 
   // Clear the calendar
   calendar.innerHTML = `
         <div class="calendar-title">
-            <span class="calendar-month">${calendarMonth.textContent}</span>
+            <span class="calendar-month">${formattedDate}</span>
             <span>${year}</span>
         </div>
     `;
@@ -335,6 +370,7 @@ function generateCalendar() {
     }
   });
 }
+
 function markCalendarDay(day) {
   const calendarDay = document.querySelector(`.calendar-day[data-day="${day}"]`);
   if (calendarDay) calendarDay.classList.add("completed");
@@ -393,7 +429,9 @@ const handleEnterKey = (e, container, isDaily = false) => {
       e.preventDefault(); // Prevent newline if Shift is not pressed
       createTaskElement(container, e.target.value.trim(), false, isDaily);
       e.target.value = "";
-      if (isDaily) resetCompletionForToday();
+      if (isDaily) {
+        resetCompletionForToday()
+      };
       adjustTextareaHeight(e.target); // Adjust height after clearing the textarea
     }
     // Allow newline if Shift + Enter is pressed and the textarea is not empty
@@ -417,3 +455,4 @@ loadTasks(weeklyTasksContainer);
 loadTasks(dailyTasksContainer, true);
 generateCalendar();
 initializeCounter(); // Initialize the counter on page load
+updateDailyStatus(); // Initialize the status message on page load

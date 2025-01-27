@@ -437,8 +437,8 @@ const handleEnterKey = (e, container, isDaily = false) => {
       createTaskElement(container, e.target.value.trim(), false, isDaily);
       e.target.value = "";
       if (isDaily) {
-        resetCompletionForToday()
-      };
+        resetCompletionForToday();
+      }
       adjustTextareaHeight(e.target); // Adjust height after clearing the textarea
     }
     // Allow newline if Shift + Enter is pressed and the textarea is not empty
@@ -463,3 +463,69 @@ loadTasks(dailyTasksContainer, true);
 generateCalendar();
 initializeCounter(); // Initialize the counter on page load
 updateDailyStatus(); // Initialize the status message on page load
+
+// Save entire localStorage to a file
+async function saveLocalStorageToFile() {
+  try {
+    // Convert localStorage to an object
+    const localStorageData = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      localStorageData[key] = localStorage.getItem(key);
+    }
+
+    // Save as JSON file
+    const fileHandle = await window.showSaveFilePicker({
+      suggestedName: 'localStorage-backup.json',
+      types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+    });
+    const writable = await fileHandle.createWritable();
+    await writable.write(JSON.stringify(localStorageData));
+    await writable.close();
+    alert('LocalStorage saved successfully!');
+  } catch (error) {
+    console.error('Error saving localStorage:', error);
+    alert('Failed to save localStorage.');
+  }
+}
+
+// Load entire localStorage from a file
+async function loadLocalStorageFromFile() {
+  try {
+    // Open file picker
+    const [fileHandle] = await window.showOpenFilePicker({
+      types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+    });
+    const file = await fileHandle.getFile();
+    const localStorageData = JSON.parse(await file.text());
+
+    // Step 1: Clear localStorage
+    localStorage.clear();
+
+    // Step 2: Clear the DOM containers
+    document.getElementById('daily-tasks-container').innerHTML = '';
+    document.getElementById('weekly-tasks-container').innerHTML = '';
+
+    // Step 3: Load new data into localStorage
+    for (const [key, value] of Object.entries(localStorageData)) {
+      localStorage.setItem(key, value);
+    }
+
+    // Step 4: Update the counter
+    const counter = parseInt(localStorage.getItem('completionCounter')) || 0;
+    updateCounter(counter);
+
+    // Step 5: Reload tasks in the DOM
+    loadTasks(weeklyTasksContainer);
+    loadTasks(dailyTasksContainer, true);
+
+    alert('LocalStorage loaded successfully!');
+  } catch (error) {
+    console.error('Error loading localStorage:', error);
+    alert('Failed to load localStorage.');
+  }
+}
+
+// Add event listeners to buttons
+document.getElementById('save-tasks-button').addEventListener('click', saveLocalStorageToFile);
+document.getElementById('load-tasks-button').addEventListener('click', loadLocalStorageFromFile);

@@ -195,13 +195,14 @@ textarea {
 }
 
 .calendar-day.current-day {
-  box-shadow: 0px 0px 0px 2px #a6da95 inset;
-  border: 1px solid #a6da95;
+  box-shadow:0px 0px 0px 2px #fab387 inset;
+  border: 1px solid #fab387;
   transition: all 0.3s ease;
 }
 
 .calendar-day.current-day.completed {
-  box-shadow: 0px 0px 0px 5px #11111b inset;
+  box-shadow:0px 0px 0px 5px #11111b inset;
+  border: 1px solid #fab387;
   background-color: #a6da95; /* Peach */
   color: #1e1e2e; /* Base */
 }
@@ -246,6 +247,19 @@ textarea {
   transform: translateY(0);
 }
 
+.message-title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.message-title {
+  margin-top: 0px;
+  font-size: 4rem;
+  color: #cdd6f4; /* Text */
+  font-weight: 800;
+}
+
 .dailies-counter {
   margin-top: 20px;
   font-size: 1.25rem;
@@ -259,6 +273,14 @@ textarea {
   color: #a6e3a1; /* Green */
   line-height: 3rem;
   margin-right: 5px;
+}
+
+.message-paragraph {
+  font-style: italic;
+  margin: 0px;
+  font-size: 1.25rem;
+  color: #cdd6f4; /* Text */
+  text-align: left;
 }
 
 /* Tooltip Styles */
@@ -302,9 +324,41 @@ textarea {
   opacity: 1;
 }
 
+.dailies-counter:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
 #daily-status {
   font-size: 1rem;
   color: #a6e3a1; /* Green */
   margin-left: 10px;
   font-weight: normal;
+}
+
+.general-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.file-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.file-actions button {
+  background-color: #89b4fa; /* Blue */
+  color: #1e1e2e; /* Base */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif; /* Use Inter font */
+}
+
+.file-actions button:hover {
+  background-color: #74a7f7; /* Slightly darker blue */
 }

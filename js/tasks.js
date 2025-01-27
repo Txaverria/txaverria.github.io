@@ -186,7 +186,17 @@ function loadTasks(container, isDaily = false) {
     }
     createTaskElement(container, text, completed, isDaily, completionDate); // Pass the completionDate
   });
-  if (isDaily) updateDailyStatus(); // Update the status message after loading tasks
+
+  if (isDaily) {
+    const completedDays = getFromLocalStorage("completedDays");
+    const todayEntry = completedDays.find((entry) => entry.date === getTodayDate());
+
+    if (todayEntry && todayEntry.completed) {
+      markCalendarDay(new Date().getDate());
+    }
+
+    updateDailyStatus(); // Update the status message after loading tasks
+  }
 }
 
 // Update the static counter
@@ -231,49 +241,46 @@ function checkDailyCompletion() {
   const tasks = dailyTasksContainer.querySelectorAll(".task");
   const allCompleted = tasks.length > 0 && [...tasks].every((task) => task.querySelector("input[type='checkbox']").checked);
 
+  const todayDate = getTodayDate();
+  const completedDays = getFromLocalStorage("completedDays");
+
+  // Find the entry for today
+  let todayEntry = completedDays.find((entry) => entry.date === todayDate);
+
   if (allCompleted) {
-    const todayDate = getTodayDate();
-    const completedDays = getFromLocalStorage("completedDays");
-
-    // Find the entry for today
-    const todayEntry = completedDays.find((entry) => entry.date === todayDate);
-
     if (!todayEntry) {
       // If today hasn't been marked as completed before, add it to the list
-      completedDays.push({ date: todayDate, alreadyMarked: true });
-      saveToLocalStorage("completedDays", completedDays);
+      todayEntry = { date: todayDate, completed: true, alreadyMarked: false };
+      completedDays.push(todayEntry);
+    } else {
+      // Update the completed flag
+      todayEntry.completed = true;
+    }
 
-      // Increment the counter
+    // Increment the counter only if alreadyMarked is false
+    if (!todayEntry.alreadyMarked) {
+      todayEntry.alreadyMarked = true;
       const counter = (parseInt(localStorage.getItem("completionCounter")) || 0) + 1;
       localStorage.setItem("completionCounter", counter);
-
-      // Update the static counter
       updateCounter(counter);
 
       // Trigger confetti and show message
       createConfetti();
       showMessage();
-      markCalendarDay(new Date().getDate());
-    } else if (!todayEntry.alreadyMarked) {
-      // If today has been marked as completed before but not counted, update the flag
-      todayEntry.alreadyMarked = true;
-      saveToLocalStorage("completedDays", completedDays);
-
-      // Increment the counter
-      const counter = parseInt(localStorage.getItem("completionCounter")) || 0;
-      localStorage.setItem("completionCounter", counter);
-
-      // Update the static counter
-      updateCounter(counter);
-
-      // Trigger confetti and show message
-      createConfetti();
-      showMessage();
-      markCalendarDay(new Date().getDate());
     }
+
+    // Mark the day as completed in the calendar
+    markCalendarDay(new Date().getDate());
   } else {
+    if (todayEntry) {
+      // Reset the completed flag if not all tasks are completed
+      todayEntry.completed = false;
+    }
+    // Remove the completed class from the calendar day
     resetCompletionForToday();
   }
+
+  saveToLocalStorage("completedDays", completedDays);
   updateDailyStatus(); // Update the status message after checking completion
 }
 
@@ -365,7 +372,7 @@ function generateCalendar() {
   const completedDays = getFromLocalStorage("completedDays");
   completedDays.forEach((entry) => {
     const [year, month, day] = entry.date.split("-");
-    if (parseInt(year) === today.getFullYear() && parseInt(month) === today.getMonth() + 1) {
+    if (parseInt(year) === today.getFullYear() && parseInt(month) === today.getMonth() + 1 && entry.completed) {
       markCalendarDay(parseInt(day));
     }
   });
@@ -383,13 +390,13 @@ function resetCompletionForToday() {
 
   const completedDays = getFromLocalStorage("completedDays");
   const todayDate = getTodayDate();
-  const updatedCompletedDays = completedDays.map((entry) => {
-    if (entry.date === todayDate) {
-      return { ...entry, alreadyMarked: false }; // Reset the flag but keep the date
-    }
-    return entry;
-  });
-  saveToLocalStorage("completedDays", updatedCompletedDays);
+  const todayEntry = completedDays.find((entry) => entry.date === todayDate);
+
+  if (todayEntry) {
+    // Reset the completed flag but keep alreadyMarked as is
+    todayEntry.completed = false;
+    saveToLocalStorage("completedDays", completedDays);
+  }
 }
 
 // Confetti Animation

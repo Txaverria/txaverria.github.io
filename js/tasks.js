@@ -218,13 +218,41 @@ function showMessage() {
   const messageContainer = document.querySelector(".message-container");
   const message = document.getElementById("message");
 
+  // Array of 20 motivational messages
+  const motivationalMessages = [
+    "<strong>Believe in yourself!</strong> <br /> You are capable of achieving great things.",
+    "<strong>Every day is a new opportunity!</strong> <br /> Make the most of it.",
+    "<strong>You are stronger than you think!</strong> <br /> Keep pushing forward.",
+    "<strong>Success is a journey, not a destination!</strong> <br /> Enjoy the process.",
+    "<strong>Dream big, work hard!</strong> <br /> The sky is the limit.",
+    "<strong>Stay positive, work hard!</strong> <br /> Good things will come.",
+    "<strong>You are unstoppable!</strong> <br /> Keep moving forward.",
+    "<strong>Challenges are opportunities!</strong> <br /> Embrace them and grow.",
+    "<strong>You are doing amazing!</strong> <br /> Keep up the great work.",
+    "<strong>Progress is progress, no matter how small!</strong> <br /> Celebrate every step.",
+    "<strong>You have the power to change your life!</strong> <br /> Start today.",
+    "<strong>Keep going, you're closer than you think!</strong> <br /> Don't give up now.",
+    "<strong>You are a winner!</strong> <br /> Believe it and you will achieve it.",
+    "<strong>Your hard work will pay off!</strong> <br /> Stay focused and determined.",
+    "<strong>You are making a difference!</strong> <br /> Keep up the good work.",
+    "<strong>Every step forward is a step towards success!</strong> <br /> Keep stepping.",
+    "<strong>You are capable of amazing things!</strong> <br /> Believe in your potential.",
+    "<strong>Stay focused on your goals!</strong> <br /> You will achieve them.",
+    "<strong>You are a star!</strong> <br /> Shine bright and keep going.",
+    "<strong>You are on the right path!</strong> <br /> Keep moving forward with confidence.",
+    "<strong>I'm so proud of you!</strong> <br /> Keep it up and don't be too hard on yourself if you don't achieve everything in a day.",
+  ];
+
+  // Randomly select a message from the array
+  const randomMessage = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+
+  // Update the message-paragraph with the selected message
   message.innerHTML = `
     <div class="message-title-container">
       <span class="message-title">Congratulations!</span>
     </div>
     <p class="message-paragraph">
-      <strong>I'm so proud of you!</strong> <br />
-      Keep it up and don't be too hard on yourself if you don't achieve everything in a day.
+      ${randomMessage}
     </p>`;
 
   // Show the message container
@@ -233,7 +261,7 @@ function showMessage() {
   // Hide the message after 7 seconds
   setTimeout(() => {
     messageContainer.classList.remove("visible");
-  }, 6000);
+  }, 7000);
 }
 
 // Daily Completion Logic
@@ -476,16 +504,16 @@ async function saveLocalStorageToFile() {
 
     // Save as JSON file
     const fileHandle = await window.showSaveFilePicker({
-      suggestedName: 'localStorage-backup.json',
-      types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+      suggestedName: "localStorage-backup.json",
+      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
     });
     const writable = await fileHandle.createWritable();
     await writable.write(JSON.stringify(localStorageData));
     await writable.close();
-    alert('LocalStorage saved successfully!');
+    alert("LocalStorage saved successfully!");
   } catch (error) {
-    console.error('Error saving localStorage:', error);
-    alert('Failed to save localStorage.');
+    console.error("Error saving localStorage:", error);
+    alert("Failed to save localStorage.");
   }
 }
 
@@ -494,7 +522,7 @@ async function loadLocalStorageFromFile() {
   try {
     // Open file picker
     const [fileHandle] = await window.showOpenFilePicker({
-      types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
     });
     const file = await fileHandle.getFile();
     const localStorageData = JSON.parse(await file.text());
@@ -503,8 +531,8 @@ async function loadLocalStorageFromFile() {
     localStorage.clear();
 
     // Step 2: Clear the DOM containers
-    document.getElementById('daily-tasks-container').innerHTML = '';
-    document.getElementById('weekly-tasks-container').innerHTML = '';
+    document.getElementById("daily-tasks-container").innerHTML = "";
+    document.getElementById("weekly-tasks-container").innerHTML = "";
 
     // Step 3: Load new data into localStorage
     for (const [key, value] of Object.entries(localStorageData)) {
@@ -512,20 +540,20 @@ async function loadLocalStorageFromFile() {
     }
 
     // Step 4: Update the counter
-    const counter = parseInt(localStorage.getItem('completionCounter')) || 0;
+    const counter = parseInt(localStorage.getItem("completionCounter")) || 0;
     updateCounter(counter);
 
     // Step 5: Reload tasks in the DOM
     loadTasks(weeklyTasksContainer);
     loadTasks(dailyTasksContainer, true);
 
-    alert('LocalStorage loaded successfully!');
+    alert("LocalStorage loaded successfully!");
   } catch (error) {
-    console.error('Error loading localStorage:', error);
-    alert('Failed to load localStorage.');
+    console.error("Error loading localStorage:", error);
+    alert("Failed to load localStorage.");
   }
 }
 
 // Add event listeners to buttons
-document.getElementById('save-tasks-button').addEventListener('click', saveLocalStorageToFile);
-document.getElementById('load-tasks-button').addEventListener('click', loadLocalStorageFromFile);
+document.getElementById("save-tasks-button").addEventListener("click", saveLocalStorageToFile);
+document.getElementById("load-tasks-button").addEventListener("click", loadLocalStorageFromFile);

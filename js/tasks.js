@@ -90,9 +90,10 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
   // Highlight dates in the text
   const textWithHighlightedDates = detectDates(text);
 
+  // Added white-space: pre-wrap to preserve multiple spaces in Firefox
   taskDiv.innerHTML = `
     <input type="checkbox" ${completed ? "checked" : ""}>
-    <div class="task-input" contenteditable="true" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}">${textWithHighlightedDates}</div>
+    <div class="task-input" contenteditable="true" style="color: ${isImportant ? "#f38ba8" : "#cdd6f4"}; white-space: pre-wrap;">${textWithHighlightedDates}</div>
     <span class="trash-icon"><i class="bi bi-x-lg"></i></span>
   `;
 
@@ -166,25 +167,25 @@ function createTaskElement(container, text, completed = false, isDaily = false, 
 
 function saveTasks(container) {
   const tasks = [...container.querySelectorAll(".task")].map((taskDiv) => ({
-    text: taskDiv.querySelector(".task-input").textContent, // Use textContent instead of value
+    text: taskDiv.querySelector(".task-input").textContent,
     completed: taskDiv.querySelector("input[type='checkbox']").checked,
     completionDate: taskDiv.dataset.completionDate || null,
   }));
   saveToLocalStorage(container.id, tasks);
-  if (container.id === "daily-tasks-container") updateDailyStatus(); // Update the status message after saving tasks
+  if (container.id === "daily-tasks-container") updateDailyStatus();
 }
 
 function loadTasks(container, isDaily = false) {
   const tasks = getFromLocalStorage(container.id);
   tasks.forEach(({ text, completed, completionDate }) => {
     if (isDaily) {
-      // Reset task only if it's marked completed but the completionDate is not today
+      // Reset task if marked completed but the completionDate is not today
       if (completed && completionDate !== getTodayDate()) {
         completed = false;
         completionDate = null;
       }
     }
-    createTaskElement(container, text, completed, isDaily, completionDate); // Pass the completionDate
+    createTaskElement(container, text, completed, isDaily, completionDate);
   });
 
   if (isDaily) {
@@ -195,7 +196,7 @@ function loadTasks(container, isDaily = false) {
       markCalendarDay(new Date().getDate());
     }
 
-    updateDailyStatus(); // Update the status message after loading tasks
+    updateDailyStatus();
   }
 }
 
@@ -309,7 +310,7 @@ function checkDailyCompletion() {
   }
 
   saveToLocalStorage("completedDays", completedDays);
-  updateDailyStatus(); // Update the status message after checking completion
+  updateDailyStatus();
 }
 
 // Update the daily status message
@@ -338,7 +339,7 @@ function generateCalendar() {
 
   // Helper function to get the ordinal suffix for the day
   const getOrdinalSuffix = (day) => {
-    if (day > 3 && day < 21) return "th"; // Covers 11th, 12th, 13th, etc.
+    if (day > 3 && day < 21) return "th";
     switch (day % 10) {
       case 1:
         return "st";
@@ -399,9 +400,9 @@ function generateCalendar() {
   // Mark completed days
   const completedDays = getFromLocalStorage("completedDays");
   completedDays.forEach((entry) => {
-    const [year, month, day] = entry.date.split("-");
-    if (parseInt(year) === today.getFullYear() && parseInt(month) === today.getMonth() + 1 && entry.completed) {
-      markCalendarDay(parseInt(day));
+    const [yearStr, monthStr, dayStr] = entry.date.split("-");
+    if (parseInt(yearStr) === today.getFullYear() && parseInt(monthStr) === today.getMonth() + 1 && entry.completed) {
+      markCalendarDay(parseInt(dayStr));
     }
   });
 }
@@ -421,7 +422,6 @@ function resetCompletionForToday() {
   const todayEntry = completedDays.find((entry) => entry.date === todayDate);
 
   if (todayEntry) {
-    // Reset the completed flag but keep alreadyMarked as is
     todayEntry.completed = false;
     saveToLocalStorage("completedDays", completedDays);
   }
@@ -449,37 +449,32 @@ function initializeCounter() {
 }
 
 // Event Listeners
-// Function to adjust the height of a textarea
 const adjustTextareaHeight = (textarea) => {
-  textarea.style.height = "auto"; // Reset height
-  textarea.style.height = `${textarea.scrollHeight}px`; // Adjust height
+  textarea.style.height = "auto";
+  textarea.style.height = `${textarea.scrollHeight}px`;
 };
 
-// Function to handle the "Enter" key for task creation
 const handleEnterKey = (e, container, isDaily = false) => {
   if (e.key === "Enter") {
     if (e.target.value.trim() === "") {
-      e.preventDefault(); // Prevent newline if the textarea is empty
+      e.preventDefault();
     } else if (!e.shiftKey) {
-      e.preventDefault(); // Prevent newline if Shift is not pressed
+      e.preventDefault();
       createTaskElement(container, e.target.value.trim(), false, isDaily);
       e.target.value = "";
       if (isDaily) {
         resetCompletionForToday();
       }
-      adjustTextareaHeight(e.target); // Adjust height after clearing the textarea
+      adjustTextareaHeight(e.target);
     }
-    // Allow newline if Shift + Enter is pressed and the textarea is not empty
   }
 };
 
-// Add event listeners for the weekly task input
 const weeklyTaskInput = document.getElementById("weekly-task-input");
 weeklyTaskInput.addEventListener("keydown", (e) => handleEnterKey(e, weeklyTasksContainer));
 weeklyTaskInput.addEventListener("input", (e) => adjustTextareaHeight(e.target));
 window.addEventListener("resize", () => adjustTextareaHeight(weeklyTaskInput));
 
-// Add event listeners for the daily task input
 const dailyTaskInput = document.getElementById("daily-task-input");
 dailyTaskInput.addEventListener("keydown", (e) => handleEnterKey(e, dailyTasksContainer, true));
 dailyTaskInput.addEventListener("input", (e) => adjustTextareaHeight(e.target));
@@ -489,27 +484,40 @@ window.addEventListener("resize", () => adjustTextareaHeight(dailyTaskInput));
 loadTasks(weeklyTasksContainer);
 loadTasks(dailyTasksContainer, true);
 generateCalendar();
-initializeCounter(); // Initialize the counter on page load
-updateDailyStatus(); // Initialize the status message on page load
+initializeCounter();
+updateDailyStatus();
 
 // Save entire localStorage to a file
 async function saveLocalStorageToFile() {
   try {
-    // Convert localStorage to an object
     const localStorageData = {};
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       localStorageData[key] = localStorage.getItem(key);
     }
 
-    // Save as JSON file
-    const fileHandle = await window.showSaveFilePicker({
-      suggestedName: "localStorage-backup.json",
-      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
-    });
-    const writable = await fileHandle.createWritable();
-    await writable.write(JSON.stringify(localStorageData));
-    await writable.close();
+    const jsonString = JSON.stringify(localStorageData, null, 2);
+
+    if (window.showSaveFilePicker) {
+      // Chromium-based browsers
+      const fileHandle = await window.showSaveFilePicker({
+        suggestedName: "localStorage-backup.json",
+        types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
+      });
+      const writable = await fileHandle.createWritable();
+      await writable.write(jsonString);
+      await writable.close();
+    } else {
+      // Fallback for Firefox and other browsers
+      const blob = new Blob([jsonString], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "localStorage-backup.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
     alert("LocalStorage saved successfully!");
   } catch (error) {
     console.error("Error saving localStorage:", error);
@@ -520,30 +528,42 @@ async function saveLocalStorageToFile() {
 // Load entire localStorage from a file
 async function loadLocalStorageFromFile() {
   try {
-    // Open file picker
-    const [fileHandle] = await window.showOpenFilePicker({
-      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
-    });
-    const file = await fileHandle.getFile();
+    let file;
+    if (window.showOpenFilePicker) {
+      // Chromium-based browsers
+      const [fileHandle] = await window.showOpenFilePicker({
+        types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
+      });
+      file = await fileHandle.getFile();
+    } else {
+      // Fallback for Firefox and other browsers
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = ".json";
+      input.style.display = "none";
+      document.body.appendChild(input);
+      input.click();
+      await new Promise((resolve) => (input.onchange = resolve));
+      file = input.files[0];
+      document.body.removeChild(input);
+    }
+
+    if (!file) return;
+
     const localStorageData = JSON.parse(await file.text());
 
-    // Step 1: Clear localStorage
+    // Clear and reload localStorage
     localStorage.clear();
-
-    // Step 2: Clear the DOM containers
     document.getElementById("daily-tasks-container").innerHTML = "";
     document.getElementById("weekly-tasks-container").innerHTML = "";
 
-    // Step 3: Load new data into localStorage
     for (const [key, value] of Object.entries(localStorageData)) {
       localStorage.setItem(key, value);
     }
 
-    // Step 4: Update the counter
     const counter = parseInt(localStorage.getItem("completionCounter")) || 0;
     updateCounter(counter);
 
-    // Step 5: Reload tasks in the DOM
     loadTasks(weeklyTasksContainer);
     loadTasks(dailyTasksContainer, true);
 
